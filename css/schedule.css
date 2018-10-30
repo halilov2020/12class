@@ -1,0 +1,46 @@
+.schedule-page {
+	padding-top: 35px;
+	padding-left: 35px;
+	box-sizing: border-box;
+}
+
+.box {
+	display: inline-block;
+}
+.box div {
+
+}
+.objects div{
+	height: 15px;
+    padding-top: 8px;
+    padding-bottom: 10px;
+    border-top: 1px ridge black;
+    text-align: center;
+}
+.objects {
+	display: block;
+	width:250px;
+	border: 2px ridge black;
+}
+.day_title {
+	margin-bottom:15px;
+	text-align: center; 
+}
+.title {
+	text-align: left;
+	margin-left: 35px;
+	margin-top: 25px;
+}
+/* начинаются предметы 
+.fr {
+	background-color: green;
+}
+.l-ro {
+	background-color: blue;
+}
+.geo {
+	background-color: yellow;
+}
+.math {
+	background-color: purple;
+} */

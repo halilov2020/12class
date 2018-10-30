@@ -1,0 +1,66 @@
+html {
+	font-family: Arial;
+}
+form {
+	padding-top: 20px;
+	padding-left:20px;
+}
+form ul{
+margin: 0px;
+padding: 0px;
+list-style: none;
+}
+form li {
+	padding: 12px;
+}
+input[name="login"] {
+	width: 200px;
+	height: 20px;
+	border-radius: 3px;
+	background: #ffffff !important;
+	outline: none;
+	font-size: 18px;
+	margin-left: 72px;
+}
+input[name="email"] {
+	width: 200px;
+	height: 20px;
+	border-radius: 3px;
+	background: #ffffff !important;
+	outline: none;
+	font-size: 18px;
+	margin-left: 75px;
+}
+input[name="password"] {
+	width: 200px;
+	height: 20px;
+	border-radius: 3px;
+	background: #ffffff !important;
+	outline: none;
+	font-size: 18px;
+	margin-left: 61px;
+}
+input[name="password_2"] {
+	width: 200px;
+	height: 20px;
+	border-radius: 3px;
+	background: #ffffff !important;
+	outline: none;
+	font-size: 18px;
+	margin-left: 25px;
+}
+button[type="submit"] {
+	width: 150px;
+	height: 35px;
+}
+input[type="button"] {
+	width: 100px;
+	height: 35px;
+}
+a {
+	text-decoration:none;
+	color: black;
+}
+h3 {
+	margin-left: 10px;
+}

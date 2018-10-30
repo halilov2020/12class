@@ -1,0 +1,58 @@
+.h_auth_page {
+    display: none;
+    width:100%;
+    min-height:100%;
+    background-color: rgba(0,0,0,0.5);
+    overflow:hidden;
+    position:fixed;
+    top:0px;
+}
+.h_reg_page{
+
+    display: none;
+    width:100%;
+    min-height:100%;
+    background-color: rgba(0,0,0,0.5);
+    overflow:hidden;
+    position:fixed;
+    top:0px;
+}
+.h_auth_page .h_auth {
+	margin-top: 100px;
+	margin-left: 30px;
+    width:500px;
+    height: 500px;
+    padding:10px;
+    background-color: #c5c5c5;
+    border-radius:5px;
+    box-shadow: 0px 0px 10px #000;
+}
+.h_reg_page .h_reg {
+    margin-top: 100px;
+    margin-left: 30px;
+    width:500px;
+    height: 500px;
+    padding:10px;
+    background-color: #c5c5c5;
+    border-radius:5px;
+    box-shadow: 0px 0px 10px #000;
+}
+form[class="auth"] ul li {
+    list-style: none;
+}
+form[class="reg"] ul li {
+    list-style: none;
+}
+
+.close {
+    display: block;
+    background: #606061;
+    color: #FFFFFF;
+    line-height: 25px;
+    font-weight: bold;
+    border-radius:12px;
+    text-decoration: none;
+    text-align: center;
+    width: 25px;
+}
+.close:hover { background: #00d9ff; }
