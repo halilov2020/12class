@@ -5,14 +5,15 @@ require "./includes/auth_reg.php";
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8" http-equiv="Cache-Control" content="no-cache">
 	<title>12 КЛАСС</title>
 	<link type="text/css" rel="stylesheet" href="./css/main.css?v1">
 	<link type="text/css" rel="stylesheet" href="./css/popup.css?v1">
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
 	<script>
-    $(document).ready(function(){  
+    $(document).ready(function(){
         PopUpHide_auth();
     });
     function PopUpShow_auth(){
@@ -21,7 +22,7 @@ require "./includes/auth_reg.php";
 	function PopUpHide_auth(){
         $("#auth").hide();
     }
-    $(document).ready(function(){  
+    $(document).ready(function(){
         PopUpHide_reg();
     });
     function PopUpShow_reg(){
@@ -68,8 +69,8 @@ require "./includes/auth_reg.php";
 	<div class="page">
 		<div class="header">
 			<?php if (isset($_SESSION['logged_user'])): ?>
-				<a href="profile.php"><img src="<?php if($path_avatar != '') echo $path_avatar; else echo "avatars/no_avatar.jpg";?>" class="header_avatar" alt="avatar"></a><strong><?php echo $_SESSION['logged_user']->login  ?></strong>			
-					<a href="logout.php" class="settings-btn-h logout">Выйти</a>	
+				<a href="profile.php"><img src="<?php if($path_avatar != '') echo $path_avatar; else echo "avatars/no_avatar.jpg";?>" class="header_avatar" alt="avatar"></a><strong><?php echo $_SESSION['logged_user']->login  ?></strong>
+					<a href="logout.php" class="settings-btn-h logout">Выйти</a>
 			<?php else : ?>
 			<div class="authorization" align="right">
 		 		<a href="javascript:PopUpShow_auth()" class="settings-btn-h login">Войти</a>
@@ -95,7 +96,7 @@ require "./includes/auth_reg.php";
 								<input type="password" name="password">
 								<span>*</span>
 							</li>
-							<li>	
+							<li>
 								<button type="submit" name="do_login" class="submit">Войти</button>
 								<a href="register.php"><input type="button" value="Зарегистрироваться"></a>
 								<a href="/"><input type="button" value="На главную"></a>

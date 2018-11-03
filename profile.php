@@ -7,6 +7,7 @@ $path_avatar = $sql_image->avatar;
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="UTF-8" http-equiv="Cache-Control" content="no-cache">
 	<title>12 КЛАСС</title>
 	<link type="text/css" rel="stylesheet" href="./css/main.css?v1">
@@ -14,7 +15,7 @@ $path_avatar = $sql_image->avatar;
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
 	<script>
-    $(document).ready(function(){  
+    $(document).ready(function(){
         PopUpHide_auth();
     });
     function PopUpShow_auth(){
@@ -23,7 +24,7 @@ $path_avatar = $sql_image->avatar;
 	function PopUpHide_auth(){
         $("#auth").hide();
     }
-    $(document).ready(function(){  
+    $(document).ready(function(){
         PopUpHide_reg();
     });
     function PopUpShow_reg(){
@@ -69,8 +70,8 @@ $path_avatar = $sql_image->avatar;
 	<div class="page">
 		<div class="header">
 			<?php if (isset($_SESSION['logged_user'])): ?>
-				<a href="profile.php"><img src="<?php if($path_avatar != '') echo $path_avatar; else echo "avatars/no_avatar.jpg";?>" class="header_avatar" alt="avatar"></a><strong><?php echo $_SESSION['logged_user']->login  ?></strong>			
-					<a href="logout.php" class="settings-btn-h logout">Выйти</a>	
+				<a href="profile.php"><img src="<?php if($path_avatar != '') echo $path_avatar; else echo "avatars/no_avatar.jpg";?>" class="header_avatar" alt="avatar"></a><strong><?php echo $_SESSION['logged_user']->login  ?></strong>
+					<a href="logout.php" class="settings-btn-h logout">Выйти</a>
 			<?php else : ?>
 			<div class="authorization" align="right">
 		 		<a href="javascript:PopUpShow_auth()" class="settings-btn-h login">Войти</a>
@@ -78,8 +79,8 @@ $path_avatar = $sql_image->avatar;
 			</div>
 			<?php endif; ?>
 		</div>
-		
-	
+
+
 		<div class="content">
 			<div class="h_auth_page" id="auth">
 				<div class="h_auth">
@@ -97,7 +98,7 @@ $path_avatar = $sql_image->avatar;
 								<input type="password" name="password">
 								<span>*</span>
 							</li>
-							<li>	
+							<li>
 								<button type="submit" name="do_login" class="submit">Войти</button>
 								<a href="register.php"><input type="button" value="Зарегистрироваться"></a>
 								<a href="/"><input type="button" value="На главную"></a>
@@ -145,26 +146,26 @@ $path_avatar = $sql_image->avatar;
 					<div class="profile-page-title"><h3>Профиль пользователя</h3></div>
 						<div class="profile-user-block">
 
-							<img class="profile-page-avatar" src="<?php if($path_avatar != '') echo $path_avatar; else echo "avatars/no_avatar.jpg";?>"> 
+							<img class="profile-page-avatar" src="<?php if($path_avatar != '') echo $path_avatar; else echo "avatars/no_avatar.jpg";?>">
 							<div class="profile-user-info">
 								<ul>
 									<li>
 										<strong>Логин: <?php echo $_SESSION['logged_user']->login ?></strong>
 									</li>
 									<li>
-										<strong>Имя: <?php $name1 = $_SESSION['logged_user']->real_name; 
+										<strong>Имя: <?php $name1 = $_SESSION['logged_user']->real_name;
 										if ($_SESSION['logged_user']->real_name !== NULL){
-										echo $_SESSION['logged_user']->real_name; } 
+										echo $_SESSION['logged_user']->real_name; }
 										else echo 'Имя не указано'; ?></strong>
 									</li>
 									<li>
-										<strong>Возраст: <?php 
+										<strong>Возраст: <?php
 										if ($_SESSION['logged_user']->age !== NULL){
-										echo $_SESSION['logged_user']->age; } 
+										echo $_SESSION['logged_user']->age; }
 										else echo 'Возраст не указан'; ?></strong>
 									</li>
 									<li>
-										<strong>Пол: <?php 
+										<strong>Пол: <?php
 										if ($_SESSION['logged_user']->gender == 'Male') echo 'Мужской';
 										if ($_SESSION['logged_user']->gender == 'Female') echo 'Женский'; ?></strong>
 									</li>
@@ -179,12 +180,10 @@ $path_avatar = $sql_image->avatar;
 			<?php endif; ?>
 		</div>
 
-		
+
 		<div class="footer">
 			 C SRL "DIY"
 		</div>
 	</div>
 </body>
 </html>
-
-
