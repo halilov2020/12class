@@ -1,0 +1,58 @@
+.day-page {
+	display: flex;
+	flex-direction: row;
+	margin-left: 15px;
+	margin-right: 50px;
+	margin-top: 25px;
+}
+.day-date {
+	display: block;
+	width: 40px;
+	height: 40px;
+	border-radius: 12px;
+	border: 1px ridge black;
+	margin-top: 40px;
+	text-align: center;
+}
+.objects ul {
+	list-style: none;
+	padding: 0px;
+	margin-left: 20px;
+	margin-top: 20px;
+	border: 2px ridge black;
+}
+.objects ul li {
+	text-align: center;
+	height: 25px;
+	width: 200px;
+}
+.objects ul li:not(:first-child) {
+	border-top:1px ridge black;
+}
+.objects ul li:not(:last-child) {
+	border-bottom:1px ridge black;
+}
+.objects strong {
+	margin-left: 20px;
+}
+.tasks strong {
+	margin-left: 20px;
+}
+.tasks ul {
+	list-style: none;
+	padding: 0px;
+	margin-left: 20px;
+	margin-top: 20px;
+	border: 2px ridge black;
+}
+.tasks ul li {
+	text-align: center;
+	height: 25px;
+	width: 400px;
+}
+.tasks ul li:not(:first-child) {
+	border-top:1px ridge black;
+}
+.tasks ul li:not(:last-child) {
+	border-bottom:1px ridge black;
+}
