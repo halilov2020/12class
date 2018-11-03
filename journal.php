@@ -1,48 +1,203 @@
+<?php
+require "./includes/db.php";
+require "./includes/auth_reg.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<title>12 КЛАСС</title>
-	<link rel="stylesheet" href="css/main.css">
-</head>
-<body>
+	<link type="text/css" rel="stylesheet" href="./css/main.css?v1">
+	<link type="text/css" rel="stylesheet" href="./css/popup.css?v1">
+	<link type="text/css" rel="stylesheet" href="./css/journal.css?v1">
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
-	<section>
-		<div class="nav-menu">
-				<a class="logo" href="index.html">12 КЛАСС</a>
+	<script>
+    $(document).ready(function(){  
+        PopUpHide_auth();
+    });
+    function PopUpShow_auth(){
+        $("#auth").show();
+	}
+	function PopUpHide_auth(){
+        $("#auth").hide();
+    }
+    $(document).ready(function(){  
+        PopUpHide_reg();
+    });
+    function PopUpShow_reg(){
+		$("#reg").show();
+	}
+	function PopUpHide_reg(){
+	    $("#reg").hide();
+	}
+	 </script>
+</head>
+
+<body>
+	<div class="nav-menu">
+		<div class="logo_menu">
+			<a class="logo" href="/">12 КЛАСС</a>
 			<div class="nav-menu-middle">
-				<a class="nav-page" href="index.html">
-					<img id="menu_img" class="home_img" src="../img/home_n.png" alt="home">
+				<a class="nav-page" href="index.php">
+					<img class="menu_img home_img" src="./img/home_n.png" alt="home">
 					<span>Главная</span>
 				</a>
-				<a class="nav-page" href="schedule.html">
-					<img id="menu_img" class="multiple_img" src="../img/multiple-line_n.png" alt="multiple-line">
+				<a class="nav-page" href="schedule.php">
+					<img class="menu_img multiple_img" src="./img/multiple-line_n.png" alt="multiple-line">
 					<span>Расписание</span>
 				</a>
-				<a class="nav-page-active" href="journal.html">
-					<img id="menu_img" class="document_img" src="../img/document.png" alt="document">
+				<a class="nav-page-active" href="journal.php">
+					<img class="menu_img document_img" src="./img/document.png" alt="document">
 					<span>Дневник</span>
 				</a>
-				<a class="nav-page" href="calendar.html">
-					<img id="menu_img" class="calendar_img" src="../img/calendar_n.png" alt="calendar">
+				<a class="nav-page" href="calendar.php">
+					<img class="menu_img calendar_img" src="./img/calendar_n.png" alt="calendar">
 					<span>Календарь</span>
 				</a>
-				<a class="nav-page" href="settings.html">
-					<img id="menu_img" class="settings_img" src="../img/settings_n.png" alt="settings">
+				<a class="nav-page" href="settings.php">
+					<img class="menu_img settings_img" src="./img/settings_n.png" alt="settings">
 					<span>Настройки</span>
-				</a>
-				<a class="nav-page" href="profile.html">
-					<img id="menu_img" class="profile_img" src="../img/profile_n.png" alt="profile">
+					</a>
+				<a class="nav-page" href="profile.php">
+					<img class="menu_img profile_img" src="./img/profile_n.png" alt="profile">
 					<span>Профиль</span>
 				</a>
 			</div>
 		</div>
-	</section>
-
-	<section>
-		<div class="container">
+	</div>
+	<div class="page">
+		<div class="header">
+			<?php if (isset($_SESSION['logged_user'])): ?>
+				<a href="profile.php"><img src="<?php if($path_avatar != '') echo $path_avatar; else echo "avatars/no_avatar.jpg";?>" class="header_avatar" alt="avatar"></a><strong><?php echo $_SESSION['logged_user']->login  ?></strong>			
+					<a href="logout.php" class="settings-btn-h logout">Выйти</a>	
+			<?php else : ?>
+			<div class="authorization" align="right">
+		 		<a href="javascript:PopUpShow_auth()" class="settings-btn-h login">Войти</a>
+		 		<a href="javascript:PopUpShow_reg()" class="settings-btn-h register">Регистрация</a>
+			</div>
+			<?php endif; ?>
 		</div>
-	</section>
-	
+
+		<div class="content">
+			<div class="h_auth_page" id="auth">
+				<div class="h_auth">
+					<a href="javascript:PopUpHide_auth()" class="close">X</a>
+					<form method="GET" class="auth">
+						<ul>
+							<h3>Авторизация</h3>
+							<li>
+								<label for="login"><strong>Введите логин:</strong></label>
+								<input type="text" name="login" value="<?php echo @$data_auth['login'] ?>">
+								<span>*</span>
+							</li>
+							<li>
+								<label for="password"><strong>Введите пароль: </strong></label>
+								<input type="password" name="password">
+								<span>*</span>
+							</li>
+							<li>	
+								<button type="submit" name="do_login" class="submit">Войти</button>
+								<a href="register.php"><input type="button" value="Зарегистрироваться"></a>
+								<a href="/"><input type="button" value="На главную"></a>
+							</li>
+						</ul>
+					</form>
+
+				</div>
+			</div>
+			<div class="h_reg_page" id="reg">
+				<div class="h_reg">
+					<a href="javascript:PopUpHide_reg()" class="close">X</a>
+					<form method="POST" class="reg">
+						<ul>
+							<h3>Регистрация</h3>
+							<li>
+								<label for="login"><strong>Введите логин:</strong></label>
+								<input type="text" name="login" minlength="5" value="<?php echo @$data_reg['login'] ?>">
+								<span>* Пример: login123, jora12, kol9n</span>
+							</li>
+							<li>
+								<label for="email"><strong>Введите Email:</strong></label>
+								<input type="email" name="email"  value="<?php echo @$data_reg['email'] ?>">
+								<span>* Пример: ivan81@mail.ru, gerald@gmail.com</span>
+							</li>
+							<li>
+								<label for="password"><strong>Введите пароль:</strong></label>
+								<input type="password" name="password" minlength="6">
+								<span>* Пароль не должен содержать такие символы как : [!@#^%&*(<)>/'}"{,.]</span>
+							</li>
+							<li>
+								<label for="password_2"><strong>Подтвердите пароль:</strong></label>
+								<input type="password" name="password_2" minlength="6">
+								<span>* Введите пароль повторно,пароли должны совпадать!</span>
+							</li>
+							<li>
+								<button type="submit" name="sign_up">Зарегистрироваться</button>
+							</li>
+						</ul>
+					</form>
+				</div>
+			</div>
+			<div class="day-page">
+				<div class="day-date">
+					<?php 
+					$day_date = date("D",time());
+					switch ($day_date) {
+						case 'Mon':
+							echo 'Пн, '. date("d.m",time());
+							break;
+						case 'Tue':
+							echo 'Вт, '. date("d.m",time());
+							break;
+						case 'Wed':
+							echo 'Ср, '. date("d.m",time());
+							break;
+						case 'Thu':
+							echo 'Чт, '. date("d.m",time());
+							break;
+						case 'Fri':
+							echo 'Пт, '. date("d.m",time());
+							break;
+						case 'Sat':
+							echo 'Сб, '. date("d.m",time());
+							break;
+						case 'Sun':
+							echo 'Вс, '. date("d.m",time());
+							break;
+					}
+					?>
+				</div>
+				<div class="objects">
+					<strong>Предметы</strong>
+					<ul>
+						<li>Французский</li>
+						<li>Румынский язык</li>
+						<li>География</li>
+						<li>Математика</li>
+						<li>Русская лит-ра</li>
+						<li>Русская лит-ра</li>
+						<li>---</li>
+					</ul>
+				</div>
+				<div class="tasks">
+					<strong>Домашнее задание</strong>
+					<ul>
+						<li>1</li>
+						<li>2</li>
+						<li>3</li>
+						<li>4</li>
+						<li>5</li>
+						<li>6</li>
+						<li>7</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<div class="footer">
+			 © 2018 Чотка
+		</div>
+	</div>
 </body>
 </html>
