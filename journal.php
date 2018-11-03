@@ -1,6 +1,6 @@
 <?php
-require "./includes/db.php";
-require "./includes/auth_reg.php";
+//require "./includes/db.php";
+//require "./includes/auth_reg.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,7 +13,7 @@ require "./includes/auth_reg.php";
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
 	<script>
-    $(document).ready(function(){  
+    $(document).ready(function(){
         PopUpHide_auth();
     });
     function PopUpShow_auth(){
@@ -22,7 +22,7 @@ require "./includes/auth_reg.php";
 	function PopUpHide_auth(){
         $("#auth").hide();
     }
-    $(document).ready(function(){  
+    $(document).ready(function(){
         PopUpHide_reg();
     });
     function PopUpShow_reg(){
@@ -69,8 +69,8 @@ require "./includes/auth_reg.php";
 	<div class="page">
 		<div class="header">
 			<?php if (isset($_SESSION['logged_user'])): ?>
-				<a href="profile.php"><img src="<?php if($path_avatar != '') echo $path_avatar; else echo "avatars/no_avatar.jpg";?>" class="header_avatar" alt="avatar"></a><strong><?php echo $_SESSION['logged_user']->login  ?></strong>			
-					<a href="logout.php" class="settings-btn-h logout">Выйти</a>	
+				<a href="profile.php"><img src="<?php if($path_avatar != '') echo $path_avatar; else echo "avatars/no_avatar.jpg";?>" class="header_avatar" alt="avatar"></a><strong><?php echo $_SESSION['logged_user']->login  ?></strong>
+					<a href="logout.php" class="settings-btn-h logout">Выйти</a>
 			<?php else : ?>
 			<div class="authorization" align="right">
 		 		<a href="javascript:PopUpShow_auth()" class="settings-btn-h login">Войти</a>
@@ -96,7 +96,7 @@ require "./includes/auth_reg.php";
 								<input type="password" name="password">
 								<span>*</span>
 							</li>
-							<li>	
+							<li>
 								<button type="submit" name="do_login" class="submit">Войти</button>
 								<a href="register.php"><input type="button" value="Зарегистрироваться"></a>
 								<a href="/"><input type="button" value="На главную"></a>
@@ -141,59 +141,22 @@ require "./includes/auth_reg.php";
 			</div>
 			<div class="day-page">
 				<div class="day-date">
-					<?php 
-					$day_date = date("D",time());
-					switch ($day_date) {
-						case 'Mon':
-							echo 'Пн, '. date("d.m",time());
-							break;
-						case 'Tue':
-							echo 'Вт, '. date("d.m",time());
-							break;
-						case 'Wed':
-							echo 'Ср, '. date("d.m",time());
-							break;
-						case 'Thu':
-							echo 'Чт, '. date("d.m",time());
-							break;
-						case 'Fri':
-							echo 'Пт, '. date("d.m",time());
-							break;
-						case 'Sat':
-							echo 'Сб, '. date("d.m",time());
-							break;
-						case 'Sun':
-							echo 'Вс, '. date("d.m",time());
-							break;
-					}
-					?>
-				</div>
-				<div class="objects">
-					<strong>Предметы</strong>
-					<ul>
-						<li>Французский</li>
-						<li>Румынский язык</li>
-						<li>География</li>
-						<li>Математика</li>
-						<li>Русская лит-ра</li>
-						<li>Русская лит-ра</li>
-						<li>---</li>
-					</ul>
-				</div>
-				<div class="tasks">
-					<strong>Домашнее задание</strong>
-					<ul>
-						<li>1</li>
-						<li>2</li>
-						<li>3</li>
-						<li>4</li>
-						<li>5</li>
-						<li>6</li>
-						<li>7</li>
-					</ul>
+					<script>
+					var daysWeek = [
+						'Пн','Вт','Ср',
+						'Чт','Пт','Пн',
+						'Пн',
+					];
+					let d = new Date();
+					$('.day-date').html(
+						daysWeek[d.getDay()]
+						+ '\n' + d.getDate() +
+						'.' + d.getMonth());
+					</script>
 				</div>
 			</div>
 		</div>
+		<script src='./stories/journal.js'></script>
 
 		<div class="footer">
 			 © 2018 Чотка

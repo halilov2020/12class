@@ -10,16 +10,16 @@
 .box div {
 
 }
-.objects div:not(:first-child) {
+.subjects div:not(:first-child) {
 	border-top: 1px ridge black;
 }
-.objects div {
+.subjects div {
 	  height: 15px;
     padding-top: 8px;
     padding-bottom: 10px;
     text-align: center;
 }
-.objects {
+.subjects {
 	display: block;
 	width:250px;
 	border: 2px ridge black;

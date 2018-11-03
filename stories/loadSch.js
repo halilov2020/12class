@@ -10,14 +10,14 @@ $(document).ready(function() {
           .html($('<strong>')
             .html(d[i][0])));
 
-      let obj = $("<div>").addClass("objects");
+      let subj = $("<div>").addClass("subjects");
 
       for (let j = 1; j < d[i].length; j++) {
-        obj.append($("<div>")
+        subj.append($("<div>")
           .addClass(d[i][j][0]) // set class to short name
           .html(d[i][j][1])) // set the full name
       }
-      obj.appendTo(box);
+      subj.appendTo(box);
       $(".schedule-page").append(box);
 
       $(".box").css("margin", "15px");
