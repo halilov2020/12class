@@ -1,8 +1,17 @@
+<<<<<<< HEAD
 
+=======
+<?php
+require "./includes/db.php";
+require "./includes/auth_reg.php";
+
+?>
+>>>>>>> b2079786ff95abdd002c9bfc8b171f5232c8da64
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8" http-equiv="Cache-Control" content="no-cache">
 	<title>12 КЛАСС</title>
 	<link type="text/css" rel="stylesheet" href="./css/main.css?v1">
 	<link type="text/css" rel="stylesheet" href="./css/schedule.css?v1">

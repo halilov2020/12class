@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8" http-equiv="Cache-Control" content="no-cache">
 	<title>12 КЛАСС</title>
 	<link rel="stylesheet" href="css/main.css">
 </head>
@@ -43,6 +44,6 @@
 		<div class="container">
 		</div>
 	</section>
-	
+
 </body>
 </html>

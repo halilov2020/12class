@@ -10,28 +10,30 @@
 .box div {
 
 }
-.objects div{
-	height: 15px;
+.subjects div:not(:first-child) {
+	border-top: 1px ridge black;
+}
+.subjects div {
+	  height: 15px;
     padding-top: 8px;
     padding-bottom: 10px;
-    border-top: 1px ridge black;
     text-align: center;
 }
-.objects {
+.subjects {
 	display: block;
 	width:250px;
 	border: 2px ridge black;
 }
 .day_title {
 	margin-bottom:15px;
-	text-align: center; 
+	text-align: center;
 }
 .title {
 	text-align: left;
 	margin-left: 35px;
 	margin-top: 25px;
 }
-/* начинаются предметы 
+/* начинаются предметы
 .fr {
 	background-color: green;
 }
