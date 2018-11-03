@@ -14,25 +14,25 @@
 	margin-top: 40px;
 	text-align: center;
 }
-.objects ul {
+.subjects ul {
 	list-style: none;
 	padding: 0px;
 	margin-left: 20px;
 	margin-top: 20px;
 	border: 2px ridge black;
 }
-.objects ul li {
+.subjects ul li {
 	text-align: center;
 	height: 25px;
 	width: 200px;
 }
-.objects ul li:not(:first-child) {
+.subjects ul li:not(:first-child) {
 	border-top:1px ridge black;
 }
-.objects ul li:not(:last-child) {
+.subjects ul li:not(:last-child) {
 	border-bottom:1px ridge black;
 }
-.objects strong {
+.subjects strong {
 	margin-left: 20px;
 }
 .tasks strong {

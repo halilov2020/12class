@@ -147,19 +147,28 @@ $path_avatar = $sql_image->avatar;
 
 							<img class="profile-page-avatar" src="<?php if($path_avatar != '') echo $path_avatar; else echo "avatars/no_avatar.jpg";?>"> 
 							<div class="profile-user-info">
-								<strong>Логин: <?php echo $_SESSION['logged_user']->login ?></strong>
-								<strong>Имя: <?php $name1 = $_SESSION['logged_user']->real_name; 
-									if ($_SESSION['logged_user']->real_name !== NULL){
+								<ul>
+									<li>
+										<strong>Логин: <?php echo $_SESSION['logged_user']->login ?></strong>
+									</li>
+									<li>
+										<strong>Имя: <?php $name1 = $_SESSION['logged_user']->real_name; 
+										if ($_SESSION['logged_user']->real_name !== NULL){
 										echo $_SESSION['logged_user']->real_name; } 
 										else echo 'Имя не указано'; ?></strong>
-								<strong>Возраст: <?php 
-									if ($_SESSION['logged_user']->age !== NULL){
+									</li>
+									<li>
+										<strong>Возраст: <?php 
+										if ($_SESSION['logged_user']->age !== NULL){
 										echo $_SESSION['logged_user']->age; } 
 										else echo 'Возраст не указан'; ?></strong>
-								<strong>Пол: <?php 
-									if ($_SESSION['logged_user']->gender !== NULL){
-										echo $_SESSION['logged_user']->gender; } 
-										else echo 'Пол не указан'; ?></strong>
+									</li>
+									<li>
+										<strong>Пол: <?php 
+										if ($_SESSION['logged_user']->gender == 'Male') echo 'Мужской';
+										if ($_SESSION['logged_user']->gender == 'Female') echo 'Женский'; ?></strong>
+									</li>
+								</ul>
 							</div>
 							<a href="profile-edit.php" class="settings-btn profile-edit">Редактировать профиль</a>
 						</div>

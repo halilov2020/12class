@@ -1,8 +1,7 @@
 <?php
 require "./includes/db.php";
 require "./includes/auth_reg.php";
-$sql_image = R::load('users', $_SESSION['logged_user']->id);
-$path_avatar = $sql_image->avatar;
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +14,7 @@ $path_avatar = $sql_image->avatar;
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
 	<script>
-    $(document).ready(function(){  
+    $(document).ready(function(){
         PopUpHide_auth();
     });
     function PopUpShow_auth(){
@@ -24,7 +23,7 @@ $path_avatar = $sql_image->avatar;
 	function PopUpHide_auth(){
         $("#auth").hide();
     }
-    $(document).ready(function(){  
+    $(document).ready(function(){
         PopUpHide_reg();
     });
     function PopUpShow_reg(){
@@ -70,8 +69,8 @@ $path_avatar = $sql_image->avatar;
 	<div class="page">
 		<div class="header">
 			<?php if (isset($_SESSION['logged_user'])): ?>
-				<a href="profile.php"><img src="<?php if($path_avatar != '') echo $path_avatar; else echo "avatars/no_avatar.jpg";?>" class="header_avatar" alt="avatar"></a><strong><?php echo $_SESSION['logged_user']->login  ?></strong>			
-					<a href="logout.php" class="settings-btn-h logout">Выйти</a>	
+				<a href="profile.php"><img src="<?php if($path_avatar != '') echo $path_avatar; else echo "avatars/no_avatar.jpg";?>" class="header_avatar" alt="avatar"></a><strong><?php echo $_SESSION['logged_user']->login  ?></strong>
+					<a href="logout.php" class="settings-btn-h logout">Выйти</a>
 			<?php else : ?>
 			<div class="authorization" align="right">
 		 		<a href="javascript:PopUpShow_auth()" class="settings-btn-h login">Войти</a>
@@ -81,7 +80,7 @@ $path_avatar = $sql_image->avatar;
 		</div>
 
 
-		
+
 		<div class="content">
 			<div class="h_auth_page" id="auth">
 				<div class="h_auth">
@@ -99,7 +98,7 @@ $path_avatar = $sql_image->avatar;
 								<input type="password" name="password">
 								<span>*</span>
 							</li>
-							<li>	
+							<li>
 								<button type="submit" name="do_login" class="submit">Войти</button>
 								<a href="register.php"><input type="button" value="Зарегистрироваться"></a>
 								<a href="/"><input type="button" value="На главную"></a>
@@ -143,70 +142,9 @@ $path_avatar = $sql_image->avatar;
 			</div>
 			<h3 class="title">Рассписание на неделю.12 класс</h3>
 				<div class="schedule-page">
-					<div class="box">
-						<div class="day_title"><strong>Понедельник</strong></div>
-							<div class="objects">
-								<div class="fr">Французский</div>
-								<div class="l-ro">Румынский язык</div>
-								<div class="geo">География</div>
-								<div class="math">Математика</div>
-								<div class="ru-l">Русская лит-ра</div>
-								<div class="ru-l">Русская лит-ра</div>
-								<div class="nothing">---</div>
-							</div>
-					</div>
 
-					<div class="box">
-						<div class="day_title"><strong>Вторник</strong></div>
-							<div class="objects">
-								<div class="bio">Биология</div>
-								<div class="hist">История</div>
-								<div class="math">Математика</div>
-								<div class="ro">Румынская лит-ра</div>
-								<div class="phz">Физика</div>
-								<div class="en">Английский</div>
-								<div class="ru-l">Русский язык</div>
-							</div>
-					</div>
-
-					<div class="box">
-						<div class="day_title"><strong>Среда</strong></div>
-							<div class="objects">
-								<div class="ro">Румынская лит-ра</div>
-								<div class="w-lit">Всемирная лит-ра</div>
-								<div class="en">Английский</div>
-								<div class="hist">История</div>
-								<div class="inf">Информатика</div>
-								<div class="r-lic">Развитие личности</div>
-								<div class="ed-fiz">Физ-ра</div>
-							</div>
-					</div>
-
-					<div class="box">
-						<div class="day_title"><strong>Четверг</strong></div>
-							<div class="objects">
-								<div class="fr">Французский</div>
-								<div class="chem">Химия</div>
-								<div class="eco">Экология к/в</div>
-								<div class="math">Математика</div>
-								<div class="ru-l">Русская лит-ра</div>
-								<div class="ru-l">Русская лит-ра</div>
-								<div class="nothing">---</div>
-							</div>
-					</div>
-					<div class="box">
-						<div class="day_title"><strong>Пятница</strong></div>
-							<div class="objects">
-								<div class="ro">Румынская лит-ра</div>
-								<div class="phz">Физика</div>
-								<div class="civ">Гражданское восп.</div>
-								<div class="hist">История</div>
-								<div class="en">Английский</div>
-								<div class="ed-fiz">Физ-ра</div>
-								<div class="nothing">---</div>
-							</div>
-					</div>
 				</div>
+				<script src="./stories/loadSch.js"></script>
 		</div>
 
 		<div class="footer">
