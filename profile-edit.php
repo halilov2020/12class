@@ -6,12 +6,12 @@ $sql_image = R::load('users', $_SESSION['logged_user']->id);
 $path_avatar = $sql_image->avatar;
 
 $data = $_POST;
-$user = R::load('users', $_SESSION['logged_user']->id);
+$user_edit_edit = R::load('users', $_SESSION['logged_user']->id);
 $id_mysqli = $_SESSION['logged_user']->id;
 if(isset($data['confirm'])) {
 	$errors = array();
 	if(trim($data['login']) == '') {
-		$user['login'] = $user['login'];
+		$user_edit['login'] = $user_edit['login'];
 	}
 	if(trim($data['real_name']) == '') {
 		$errors[] = 'Введите имя';
@@ -68,7 +68,7 @@ if(isset($data['confirm'])) {
              		$errors[] = 'Формат изображения должен быть GIF,PNG или JPG';
              	}
              	$id = $_SESSION['logged_user']->id;
-                $date = time();
+              $date = time();
              	imagejpeg($dest, $path_to_90_directory.$id."_".$date.".jpg");
              	$avatar = $path_to_90_directory.$id."_".$date.".jpg";
              	$delfull = $path_to_90_directory.$filename;
@@ -80,12 +80,16 @@ if(isset($data['confirm'])) {
 		}
 	}
    if (!empty($errors)) {
-	    $user->login = $data['login'];
-		$user->real_name = $data['real_name'];
-		$user->age = $data['age'];
-		$user->avatar = $avatar;
-		$user->gender = $data['gender'];
-		R::store($user);
+		$match = $data;
+		if ($user_edit->login !== $match['login'] ) {
+			$user_edit->login = $data['login'];
+		} else {
+			echo 'Вы не можете зарегистрировать ещё одного пользователя с таким логином';
+		}
+		$user_edit->age = $data['age'];
+		$user_edit->avatar = $avatar;
+		$user_edit->gender = $data['gender'];
+		R::store($user_edit);
 		echo 'Изменения сохранены!';
 		unset($_SESSION['logged_user']);
     }
@@ -243,16 +247,16 @@ if(isset($data['confirm'])) {
 								<form enctype="multipart/form-data" method="POST" class="edit-profile-form">
 									<ul>
 									<li>
-										<strong>Логин: <input type="text" name="login" value="<?php echo @$user['login'] ?>"></strong>
+										<strong>Логин: <input type="text" name="login" value="<?php echo @$user_edit['login'] ?>"></strong>
 									</li>
 									<li>
-										<strong>Имя:   <input type="text" name="real_name" value="<?php echo @$user['real_name'] ?>"></strong>
+										<strong>Имя:   <input type="text" name="real_name" value="<?php echo @$user_edit['real_name'] ?>"></strong>
 									</li>
 									<li>
 										<strong>Возраст:
 
 									<select name="age" id="age">
-									 <option value="<?php echo @$user['age']?>"></option>
+									 <option value="<?php echo @$user_edit['age']?>"></option>
 									 <option value="1">1</option>
 									 <option value="2">2</option>
 									 <option value="3">3</option>
@@ -286,7 +290,7 @@ if(isset($data['confirm'])) {
 									</li>
 									<li>
 									<strong>Пол: <select name="gender" id="gender">
-									<option value="<?php echo @$user['gender'] ?>"></option>
+									<option value="<?php echo @$user_edit['gender'] ?>"></option>
 									<option value="Male">Мужской</option>
 									<option value="Female">Женский</option>
 								</select></strong>
@@ -300,7 +304,10 @@ if(isset($data['confirm'])) {
 											</label>
 										</div>
               						</li>
-									<li><input type="submit" name="confirm" value="Сохранить" class="settings-btn profile-edit-submit"><a href="profile.php" class="settings-btn profile-edit-escape">Отмена</a></li>
+									<li>
+										<input type="submit" name="confirm" value="Сохранить" class="settings-btn profile-edit-submit">
+										<a href="profile.php" class="settings-btn profile-edit-escape">Отмена</a>
+									</li>
 									</ul>
 								</form>
 							</div>

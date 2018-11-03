@@ -1,12 +1,9 @@
-<<<<<<< HEAD
-
-=======
 <?php
 require "./includes/db.php";
 require "./includes/auth_reg.php";
 
 ?>
->>>>>>> b2079786ff95abdd002c9bfc8b171f5232c8da64
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
