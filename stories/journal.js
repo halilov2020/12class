@@ -56,7 +56,6 @@ function setDzs() {
 
   // number rows for now
   $.each(dzs, function(i, val) {
-    console.log($(this));
     $(this).html(i + 1);
   });
 }
