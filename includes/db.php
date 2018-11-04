@@ -2,8 +2,8 @@
 
 require "./libs/rb.php";
 
-R::setup( 'mysql:host=free14.beget.com',
-        'q97572j4_1', '123123123' );
+R::setup( 'mysql:host=localhost;dbname=12class',
+        'root', '' );
 
 
 session_start();
