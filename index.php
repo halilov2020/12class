@@ -1,6 +1,6 @@
 <?php
-require "./includes/db.php";
-require "./includes/auth_reg.php";
+//require "./includes/db.php";
+//require "./includes/auth_reg.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -143,11 +143,14 @@ require "./includes/auth_reg.php";
 			<?php endif; ?>
 		</div>
 
+		 <div id='sketch-holder'></div>
 
 		<div class="footer">
 			 © 2018 Чотка
 		</div>
 	</div>
 	<script src="./scripts/index.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.6/p5.js"></script>
+  <script src="./scripts/sketch.js"></script>
 </body>
 </html>
