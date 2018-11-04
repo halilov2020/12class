@@ -20,15 +20,15 @@ function draw() {
   background(208, 230, 227);
   let t = frameCount / 60; // update time
 
-  // create a random number of snowflakes each frame
+  // create a random number of targets each frame
   if (frameCount % 5 == 0) {
-    targets.push(new target()); // append snowflake object
+    targets.push(new target()); // append target object
   }
 
-  // loop through snowflakes with a for..of loop
+  // loop through targets with a for..of loop
   for (let flake of targets) {
-    flake.update(t); // update snowflake position
-    flake.display(); // draw snowflake
+    flake.update(t); // update target position
+    flake.display(); // draw target
   }
   push();
   if (hit) {
@@ -56,7 +56,7 @@ function draw() {
   pop();
 }
 
-// snowflake class
+// target class
 function target() {
 
   // initialize coordinates
@@ -68,8 +68,8 @@ function target() {
   this.dying = false;
   this.deathFrame;
 
-  // radius of snowflake spiral
-  // chosen so the snowflakes are uniformly spread out in area
+  // radius of target spiral
+  // chosen so the targets are uniformly spread out in area
   this.radius = sqrt(random(pow(width / 2, 2)));
 
   this.update = function(time) {
@@ -80,12 +80,12 @@ function target() {
     if (!this.dying) {
       this.posX = width / 2 + this.radius * sin(angle);
 
-      // different size snowflakes fall at slightly different y speeds
+      // different size targets fall at slightly different y speeds
       this.posY += pow(this.size, 0.2);
 
     }
 
-    // delete snowflake if past end of screen
+    // delete target if past end of screen
     if (this.posY > height + this.size) {
       this.die();
     }
@@ -96,6 +96,8 @@ function target() {
     push();
     translate(this.posX, this.posY);
     rotate(angle * 3);
+    fill(203, 106, 212)
+    ellipse(0, 0, this.size, this.size)
     image(img, -this.size / 2, -this.size / 2, this.size, this.size);
     //ellipse(0, 0, this.size, this.size)
     if (this.dying) {
