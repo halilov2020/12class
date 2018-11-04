@@ -1,6 +1,8 @@
 <?php
+if (isset($_SESSION['logged_user']->id)) {
 $sql_image = R::load('users', $_SESSION['logged_user']->id);
 $path_avatar = $sql_image->avatar;
+}
 
 $data_auth = $_GET;
 if(isset($data_auth['do_login'])) {
@@ -42,7 +44,7 @@ if(isset($data_reg['sign_up'])) {
 		$errors[] = 'Введите email';
 	}
 
-	if(	$data_reg['password'] == '') {     
+	if(	$data_reg['password'] == '') {
 
 		$errors[] = 'Введите пароль';
 	}
