@@ -1,6 +1,6 @@
 <?php
 require "./includes/db.php";
-require "./includes/auth-reg.php";
+require "./includes/auth_reg.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,12 +12,76 @@ require "./includes/auth-reg.php";
 	<link type="text/css" rel="stylesheet" href="./css/popup.css?v1">
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
-	<script>
-
-	 </script>
 </head>
 
 <body>
+
+	<div class="content">
+	<div class="pop-ups">
+		<!-- Authentication popup -->
+		<div class="auth-page" id="auth">
+			<div class="h-auth">
+				<div class="close">&#10060;</div>
+				<form method="GET" class="auth">
+					<ul>
+						<h3>Авторизация</h3>
+						<li>
+							<label for="login"><strong>Введите логин:</strong></label>
+							<input type="text" name="login" value="<?php echo @$data_auth['login'] ?>">
+							<span>*</span>
+						</li>
+						<li>
+							<label for="password"><strong>Введите пароль: </strong></label>
+							<input type="password" name="password">
+							<span>*</span>
+						</li>
+						<li>
+							<button type="submit" name="do_login" class="submit">Войти</button>
+							<a href="register.php"><input type="button" value="Зарегистрироваться"></a>
+							<a href="/"><input type="button" value="На главную"></a>
+						</li>
+					</ul>
+				</form>
+			</div>
+		</div>
+
+
+		<!-- Registration popup -->
+		<div class="reg-page" id="reg">
+			<div class="h-reg">
+				<div class="close">&#10060;</div>
+				<form method="POST" class="reg">
+					<ul>
+						<h3>Регистрация</h3>
+						<li>
+							<label for="login"><strong>Введите логин:</strong></label>
+							<input type="text" name="login" minlength="5" value="<?php echo @$data_reg['login'] ?>">
+							<span>* Пример: login123, jora12, kol9n</span>
+						</li>
+						<li>
+							<label for="email"><strong>Введите Email:</strong></label>
+							<input type="email" name="email"  value="<?php echo @$data_reg['email'] ?>">
+							<span>* Пример: ivan81@mail.ru, gerald@gmail.com</span>
+						</li>
+						<li>
+							<label for="password"><strong>Введите пароль:</strong></label>
+							<input type="password" name="password" minlength="6">
+							<span>* Пароль не должен содержать такие символы как : [!@#^%&*(<)>/'}"{,.]</span>
+						</li>
+						<li>
+							<label for="password_2"><strong>Подтвердите пароль:</strong></label>
+							<input type="password" name="password_2" minlength="6">
+							<span>* Введите пароль повторно,пароли должны совпадать!</span>
+						</li>
+						<li>
+							<button type="submit" name="sign_up">Зарегистрироваться</button>
+						</li>
+					</ul>
+				</form>
+			</div>
+		</div>
+	</div>
+
 	<div class="nav-menu">
 		<div class="logo_menu">
 			<a class="logo" href="/">12 КЛАСС</a>
@@ -78,70 +142,8 @@ require "./includes/auth-reg.php";
 			</div>
 			<?php endif; ?>
 		</div>
-		<div class="content">
 
-			<!-- Authentication popup -->
-			<div class="auth-page" id="auth">
-				<div class="h-auth">
-					<div class="close">&#10060;</div>
-					<form method="GET" class="auth">
-						<ul>
-							<h3>Авторизация</h3>
-							<li>
-								<label for="login"><strong>Введите логин:</strong></label>
-								<input type="text" name="login" value="<?php echo @$data_auth['login'] ?>">
-								<span>*</span>
-							</li>
-							<li>
-								<label for="password"><strong>Введите пароль: </strong></label>
-								<input type="password" name="password">
-								<span>*</span>
-							</li>
-							<li>
-								<button type="submit" name="do_login" class="submit">Войти</button>
-								<a href="register.php"><input type="button" value="Зарегистрироваться"></a>
-								<a href="/"><input type="button" value="На главную"></a>
-							</li>
-						</ul>
-					</form>
-				</div>
-			</div>
 
-			<!-- Registration popup -->
-			<div class="reg-page" id="reg">
-				<div class="h-reg">
-					<div class="close">&#10060;</div>
-					<form method="POST" class="reg">
-						<ul>
-							<h3>Регистрация</h3>
-							<li>
-								<label for="login"><strong>Введите логин:</strong></label>
-								<input type="text" name="login" minlength="5" value="<?php echo @$data_reg['login'] ?>">
-								<span>* Пример: login123, jora12, kol9n</span>
-							</li>
-							<li>
-								<label for="email"><strong>Введите Email:</strong></label>
-								<input type="email" name="email"  value="<?php echo @$data_reg['email'] ?>">
-								<span>* Пример: ivan81@mail.ru, gerald@gmail.com</span>
-							</li>
-							<li>
-								<label for="password"><strong>Введите пароль:</strong></label>
-								<input type="password" name="password" minlength="6">
-								<span>* Пароль не должен содержать такие символы как : [!@#^%&*(<)>/'}"{,.]</span>
-							</li>
-							<li>
-								<label for="password_2"><strong>Подтвердите пароль:</strong></label>
-								<input type="password" name="password_2" minlength="6">
-								<span>* Введите пароль повторно,пароли должны совпадать!</span>
-							</li>
-							<li>
-								<button type="submit" name="sign_up">Зарегистрироваться</button>
-							</li>
-						</ul>
-					</form>
-				</div>
-			</div>
-		</div>
 		<div class="footer">
 			 © 2018 Чотка
 		</div>

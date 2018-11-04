@@ -1,7 +1,13 @@
 $(document).ready(function() {
 
-  //$("#auth").hide();
-  //$("#reg").hide();
+  $("#auth, #reg").click(function(event) {
+    event.stopPropagation();
+  }).hide()
+    .toggleClass('unhid');
+
+  $(".h-auth, .h-reg").click(function(event) {
+    event.stopPropagation();
+  })
 
   $("#reg div.close").click(function() {
     $("#reg").hide();
@@ -9,11 +15,27 @@ $(document).ready(function() {
   $("#auth div.close").click(function() {
     $("#auth").hide();
   });
-  $("div.btn-popup.login").click(function() {
-    $("#auth").show();
+  $("div.btn-popup.login").click(function(event) {
+    $("#auth").fadeIn()
+      .click(function() {
+        // remove click event
+        $(this).fadeOut("fast")
+          .off("click");
+      }).find(".h-auth")
+      .hide()
+      .slideDown();
+    event.stopPropagation();
   });
-  $("div.btn-popup.register").click(function() {
-    $("#reg").show();
+  $("div.btn-popup.register").click(function(event) {
+    $("#reg").fadeIn()
+      .click(function() {
+        // remove click event
+        $(this).fadeOut("fast")
+          .off("click");
+      }).find(".h-reg")
+      .hide()
+      .slideDown();
+    event.stopPropagation();
   });
 })
 
