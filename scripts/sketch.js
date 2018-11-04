@@ -3,6 +3,7 @@ let hit = false;
 let hitframe = 0;
 let hitX;
 let hitY;
+let offSet = 0;
 
 function setup() {
   var canvas = createCanvas(windowWidth, windowHeight);
@@ -29,6 +30,7 @@ function draw() {
   }
 
   if (hit) {
+    offSet++;
 
     if (frameCount - hitframe < 30) {
       fill(33, 237, 72);
@@ -37,10 +39,11 @@ function draw() {
       let alpha = ~~map(frameCount - hitframe, 30, 40, 255, 0);
       fill(33, 237, 72, alpha);
     }
-    text('BANG', hitX, hitY);
+    text('BANG', hitX, hitY - offSet);
 
     if (frameCount - hitframe > 40) {
       hit = false;
+      offSet = 0;
     }
   }
 
