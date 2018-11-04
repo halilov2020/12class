@@ -71,6 +71,7 @@ require "./includes/auth-reg.php";
 		<div class="header">
 			<?php if (isset($_SESSION['logged_user'])): ?>
 				<a href="profile.php"><img src="<?php if($path_avatar != '') echo $path_avatar; else echo "avatars/no_avatar.jpg";?>" class="header_avatar" alt="avatar"></a><strong><?php echo $_SESSION['logged_user']->login  ?></strong>
+					<a href="logout.php" class="settings-btn-h logout">Выйти</a>
 					<a href="logout.php" class="btn-popup logout">Выйти</a>
 			<?php else : ?>
 			<div class="authorization" align="right">
