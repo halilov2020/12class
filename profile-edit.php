@@ -6,21 +6,21 @@ $sql_image = R::load('users', $_SESSION['logged_user']->id);
 $path_avatar = $sql_image->avatar;
 
 $data = $_POST;
-$user_edit_edit = R::load('users', $_SESSION['logged_user']->id);
+$user = R::load('users', $_SESSION['logged_user']->id);
 $id_mysqli = $_SESSION['logged_user']->id;
 if(isset($data['confirm'])) {
 	$errors = array();
-	if(trim($data['login']) == '') {
-		$user_edit['login'] = $user_edit['login'];
+	if(trim($data['login']) == '' or ' ') {
+		$data['login'] = $user['login'];
 	}
-	if(trim($data['real_name']) == '') {
-		$errors[] = 'Введите имя';
+	if(trim($data['real_name']) == '' or ' ') {
+		$data['real_name'] = $user['real_name'];
 	}
 	if($data['age'] == '' or ' ') {
-		$errors[] = 'Выберите возраст';
+		$data['age'] = $user['age'];
 	}
 	if($data['gender'] == '') {
-		$errors[] = 'Выберите ваш пол';
+		$data['gender'] = $user['gender'];
 	}
 	if( !empty($_FILES['avatar_img']) ) {
 		$avatar_img = $_FILES['avatar_img']['name'];
@@ -79,24 +79,20 @@ if(isset($data['confirm'])) {
             }
 		}
 	}
-   if (!empty($errors)) {
-		$match = $data;
-		if ($user_edit->login !== $match['login'] ) {
-			$user_edit->login = $data['login'];
+	if (empty($errors)) {
+		if ($user->id == $_SESSION['logged_user']->id){
+			$user->login = $data['login'];
+			$user->real_name = $data['real_name'];
+			$user->age = $data['age'];
+			$user->avatar = $avatar;
+			$user->gender = $data['gender'];
+			R::store($user);
+			echo 'Изменения сохранены!';
+			unset($_SESSION['logged_user']);
 		} else {
-			echo 'Вы не можете зарегистрировать ещё одного пользователя с таким логином';
+			echo "Вы не можете внести изменения для этого пользователя,для начала авторизируйтесь!";
 		}
-		$user_edit->age = $data['age'];
-		$user_edit->avatar = $avatar;
-		$user_edit->gender = $data['gender'];
-		R::store($user_edit);
-		echo 'Изменения сохранены!';
-		unset($_SESSION['logged_user']);
-    }
-		else {
-			echo "Возникли некоторые неполадки:" . array_shift($errors) . " пожалуйста исправьте их!";
-		}
-
+	} else {echo "Возникли некоторые неполадки:" . array_shift($errors) . " пожалуйста исправьте их!";}
 }
 ?>
 <!DOCTYPE html>
@@ -247,16 +243,16 @@ if(isset($data['confirm'])) {
 								<form enctype="multipart/form-data" method="POST" class="edit-profile-form">
 									<ul>
 									<li>
-										<strong>Логин: <input type="text" name="login" value="<?php echo @$user_edit['login'] ?>"></strong>
+										<strong>Логин: <input type="text" name="login" value="<?php echo @$user['login'] ?>"></strong>
 									</li>
 									<li>
-										<strong>Имя:   <input type="text" name="real_name" value="<?php echo @$user_edit['real_name'] ?>"></strong>
+										<strong>Имя:   <input type="text" name="real_name" value="<?php echo @$user['real_name'] ?>"></strong>
 									</li>
 									<li>
 										<strong>Возраст:
 
 									<select name="age" id="age">
-									 <option value="<?php echo @$user_edit['age']?>"></option>
+									 <option value="<?php echo @$user['age']?>"></option>
 									 <option value="1">1</option>
 									 <option value="2">2</option>
 									 <option value="3">3</option>
@@ -290,7 +286,7 @@ if(isset($data['confirm'])) {
 									</li>
 									<li>
 									<strong>Пол: <select name="gender" id="gender">
-									<option value="<?php echo @$user_edit['gender'] ?>"></option>
+									<option value="<?php echo @$user['gender'] ?>"></option>
 									<option value="Male">Мужской</option>
 									<option value="Female">Женский</option>
 								</select></strong>
@@ -304,10 +300,7 @@ if(isset($data['confirm'])) {
 											</label>
 										</div>
               						</li>
-									<li>
-										<input type="submit" name="confirm" value="Сохранить" class="settings-btn profile-edit-submit">
-										<a href="profile.php" class="settings-btn profile-edit-escape">Отмена</a>
-									</li>
+									<li><input type="submit" name="confirm" value="Сохранить" class="settings-btn profile-edit-submit"><a href="profile.php" class="settings-btn profile-edit-escape">Отмена</a></li>
 									</ul>
 								</form>
 							</div>
