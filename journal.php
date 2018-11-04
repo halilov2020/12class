@@ -1,11 +1,12 @@
 <?php
-//require "./includes/db.php";
-//require "./includes/auth_reg.php";
+require "./includes/db.php";
+require "./includes/auth-reg.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8" http-equiv="Cache-Control" content="no-cache">
 	<title>12 КЛАСС</title>
 	<link type="text/css" rel="stylesheet" href="./css/main.css?v1">
 	<link type="text/css" rel="stylesheet" href="./css/popup.css?v1">
@@ -71,17 +72,18 @@
 			<?php if (isset($_SESSION['logged_user'])): ?>
 				<a href="profile.php"><img src="<?php if($path_avatar != '') echo $path_avatar; else echo "avatars/no_avatar.jpg";?>" class="header_avatar" alt="avatar"></a><strong><?php echo $_SESSION['logged_user']->login  ?></strong>
 					<a href="logout.php" class="settings-btn-h logout">Выйти</a>
+					<a href="logout.php" class="btn-popup logout">Выйти</a>
 			<?php else : ?>
 			<div class="authorization" align="right">
-		 		<a href="javascript:PopUpShow_auth()" class="settings-btn-h login">Войти</a>
-		 		<a href="javascript:PopUpShow_reg()" class="settings-btn-h register">Регистрация</a>
+		 		<a href="javascript:PopUpShow_auth()" class="btn-popup login">Войти</a>
+		 		<a href="javascript:PopUpShow_reg()" class="btn-popup register">Регистрация</a>
 			</div>
 			<?php endif; ?>
 		</div>
 
 		<div class="content">
-			<div class="h_auth_page" id="auth">
-				<div class="h_auth">
+			<div class="auth-page" id="auth">
+				<div class="h-auth">
 					<a href="javascript:PopUpHide_auth()" class="close">X</a>
 					<form method="GET" class="auth">
 						<ul>
@@ -106,8 +108,8 @@
 
 				</div>
 			</div>
-			<div class="h_reg_page" id="reg">
-				<div class="h_reg">
+			<div class="reg-page" id="reg">
+				<div class="h-reg">
 					<a href="javascript:PopUpHide_reg()" class="close">X</a>
 					<form method="POST" class="reg">
 						<ul>

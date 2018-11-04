@@ -1,6 +1,0 @@
-<!-- <?php
-require "./includes/db.php";
-require "./includes/auth_reg.php";
-$sql_image = R::load('users', $_SESSION['logged_user']->id);
-$path_avatar = $sql_image->avatar;
-?> -->

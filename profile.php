@@ -1,12 +1,13 @@
 <?php
 require "./includes/db.php";
-require "./includes/auth_reg.php";
+require "./includes/auth-reg.php";
 $sql_image = R::load('users', $_SESSION['logged_user']->id);
 $path_avatar = $sql_image->avatar;
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="UTF-8" http-equiv="Cache-Control" content="no-cache">
 	<title>12 КЛАСС</title>
 	<link type="text/css" rel="stylesheet" href="./css/main.css?v1">
@@ -14,7 +15,7 @@ $path_avatar = $sql_image->avatar;
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
 	<script>
-    $(document).ready(function(){  
+    $(document).ready(function(){
         PopUpHide_auth();
     });
     function PopUpShow_auth(){
@@ -23,7 +24,7 @@ $path_avatar = $sql_image->avatar;
 	function PopUpHide_auth(){
         $("#auth").hide();
     }
-    $(document).ready(function(){  
+    $(document).ready(function(){
         PopUpHide_reg();
     });
     function PopUpShow_reg(){
@@ -69,20 +70,20 @@ $path_avatar = $sql_image->avatar;
 	<div class="page">
 		<div class="header">
 			<?php if (isset($_SESSION['logged_user'])): ?>
-				<a href="profile.php"><img src="<?php if($path_avatar != '') echo $path_avatar; else echo "avatars/no_avatar.jpg";?>" class="header_avatar" alt="avatar"></a><strong><?php echo $_SESSION['logged_user']->login  ?></strong>			
-					<a href="logout.php" class="settings-btn-h logout">Выйти</a>	
+				<a href="profile.php"><img src="<?php if($path_avatar != '') echo $path_avatar; else echo "avatars/no_avatar.jpg";?>" class="header_avatar" alt="avatar"></a><strong><?php echo $_SESSION['logged_user']->login  ?></strong>
+					<a href="logout.php" class="btn-popup logout">Выйти</a>
 			<?php else : ?>
 			<div class="authorization" align="right">
-		 		<a href="javascript:PopUpShow_auth()" class="settings-btn-h login">Войти</a>
-		 		<a href="javascript:PopUpShow_reg()" class="settings-btn-h register">Регистрация</a>
+		 		<a href="javascript:PopUpShow_auth()" class="btn-popup login">Войти</a>
+		 		<a href="javascript:PopUpShow_reg()" class="btn-popup register">Регистрация</a>
 			</div>
 			<?php endif; ?>
 		</div>
-		
-	
+
+
 		<div class="content">
-			<div class="h_auth_page" id="auth">
-				<div class="h_auth">
+			<div class="auth-page" id="auth">
+				<div class="h-auth">
 					<a href="javascript:PopUpHide_auth()" class="close">X</a>
 					<form method="GET" class="auth">
 						<ul>
@@ -97,7 +98,7 @@ $path_avatar = $sql_image->avatar;
 								<input type="password" name="password">
 								<span>*</span>
 							</li>
-							<li>	
+							<li>
 								<button type="submit" name="do_login" class="submit">Войти</button>
 								<a href="register.php"><input type="button" value="Зарегистрироваться"></a>
 								<a href="/"><input type="button" value="На главную"></a>
@@ -106,8 +107,8 @@ $path_avatar = $sql_image->avatar;
 					</form>
 				</div>
 			</div>
-			<div class="h_reg_page" id="reg">
-				<div class="h_reg">
+			<div class="reg-page" id="reg">
+				<div class="h-reg">
 					<a href="javascript:PopUpHide_reg()" class="close">X</a>
 					<form method="POST" class="reg">
 						<ul>
@@ -145,21 +146,30 @@ $path_avatar = $sql_image->avatar;
 					<div class="profile-page-title"><h3>Профиль пользователя</h3></div>
 						<div class="profile-user-block">
 
-							<img class="profile-page-avatar" src="<?php if($path_avatar != '') echo $path_avatar; else echo "avatars/no_avatar.jpg";?>"> 
+							<img class="profile-page-avatar" src="<?php if($path_avatar != '') echo $path_avatar; else echo "avatars/no_avatar.jpg";?>">
 							<div class="profile-user-info">
-								<strong>Логин: <?php echo $_SESSION['logged_user']->login ?></strong>
-								<strong>Имя: <?php $name1 = $_SESSION['logged_user']->real_name; 
-									if ($_SESSION['logged_user']->real_name !== NULL){
-										echo $_SESSION['logged_user']->real_name; } 
+								<ul>
+									<li>
+										<strong>Логин: <?php echo $_SESSION['logged_user']->login ?></strong>
+									</li>
+									<li>
+										<strong>Имя: <?php $name1 = $_SESSION['logged_user']->real_name;
+										if ($_SESSION['logged_user']->real_name !== NULL){
+										echo $_SESSION['logged_user']->real_name; }
 										else echo 'Имя не указано'; ?></strong>
-								<strong>Возраст: <?php 
-									if ($_SESSION['logged_user']->age !== NULL){
-										echo $_SESSION['logged_user']->age; } 
+									</li>
+									<li>
+										<strong>Возраст: <?php
+										if ($_SESSION['logged_user']->age !== NULL){
+										echo $_SESSION['logged_user']->age; }
 										else echo 'Возраст не указан'; ?></strong>
-								<strong>Пол: <?php 
-									if ($_SESSION['logged_user']->gender !== NULL){
-										echo $_SESSION['logged_user']->gender; } 
-										else echo 'Пол не указан'; ?></strong>
+									</li>
+									<li>
+										<strong>Пол: <?php
+										if ($_SESSION['logged_user']->gender == 'Male') echo 'Мужской';
+										if ($_SESSION['logged_user']->gender == 'Female') echo 'Женский'; ?></strong>
+									</li>
+								</ul>
 							</div>
 							<a href="profile-edit.php" class="settings-btn profile-edit">Редактировать профиль</a>
 						</div>
@@ -170,12 +180,10 @@ $path_avatar = $sql_image->avatar;
 			<?php endif; ?>
 		</div>
 
-		
+
 		<div class="footer">
 			 C SRL "DIY"
 		</div>
 	</div>
 </body>
 </html>
-
-

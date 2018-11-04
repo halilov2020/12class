@@ -42,7 +42,6 @@ $(document).ready(function() {
     $('.day-page')
       .append($subjs)
       .append($tasks);
-
     // get hometask from DB and shove it into proper li's
     setDzs();
   });
