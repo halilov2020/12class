@@ -18,7 +18,6 @@ $(document).ready(function() {
           .html(d[i][j][1])) // set the full name
       }
       subj.appendTo(box);
-      
       $(".schedule-page").append(box);
 
       $(".box").css("margin", "15px");

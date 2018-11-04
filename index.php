@@ -1,6 +1,6 @@
 <?php
 require "./includes/db.php";
-require "./includes/auth_reg.php";
+require "./includes/auth-reg.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,24 +13,7 @@ require "./includes/auth_reg.php";
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
 	<script>
-    $(document).ready(function(){
-        PopUpHide_auth();
-    });
-    function PopUpShow_auth(){
-        $("#auth").show();
-	}
-	function PopUpHide_auth(){
-        $("#auth").hide();
-    }
-    $(document).ready(function(){
-        PopUpHide_reg();
-    });
-    function PopUpShow_reg(){
-		$("#reg").show();
-	}
-	function PopUpHide_reg(){
-	    $("#reg").hide();
-	}
+
 	 </script>
 </head>
 
@@ -66,25 +49,41 @@ require "./includes/auth_reg.php";
 			</div>
 		</div>
 	</div>
+
 	<div class="page">
 		<div class="header">
+
+			<!-- If logged in -->
 			<?php if (isset($_SESSION['logged_user'])): ?>
-				<a href="profile.php"><img src="<?php if($path_avatar != '')
-				echo $path_avatar; else echo "avatars/no_avatar.jpg";?>" class="header_avatar" alt="avatar">
-			</a><strong><?php echo $_SESSION['logged_user']->login  ?></strong>
-					<a href="logout.php" class="settings-btn-h logout">Выйти</a>
+				<a href="profile.php">
+					<img class="header_avatar" alt="avatar" src="
+					<?php
+							// set user's avatar
+							if($path_avatar != '') {
+								echo $path_avatar;
+							} else {
+								echo "avatars/no_avatar.jpg";
+							}
+					?>"></a>
+
+				<!-- Show login -->
+			<strong><?php echo $_SESSION['logged_user']->login  ?></strong>
+			<a href="logout.php" class="btn-popup logout">Выйти</a>
+
+			<!-- If not logged in -->
 			<?php else : ?>
 			<div class="authorization" align="right">
-		 		<a href="javascript:PopUpShow_auth()" class="settings-btn-h login">Войти</a>
-		 		<a href="javascript:PopUpShow_reg()" class="settings-btn-h register">Регистрация</a>
+		 		<div class="btn-popup login">Войти</div>
+		 		<div class="btn-popup register">Регистрация</div>
 			</div>
 			<?php endif; ?>
 		</div>
-
 		<div class="content">
-			<div class="h_auth_page" id="auth">
-				<div class="h_auth">
-					<a href="javascript:PopUpHide_auth()" class="close">X</a>
+
+			<!-- Authentication popup -->
+			<div class="auth-page" id="auth">
+				<div class="h-auth">
+					<div class="close">&#10060;</div>
 					<form method="GET" class="auth">
 						<ul>
 							<h3>Авторизация</h3>
@@ -105,12 +104,13 @@ require "./includes/auth_reg.php";
 							</li>
 						</ul>
 					</form>
-
 				</div>
 			</div>
-			<div class="h_reg_page" id="reg">
-				<div class="h_reg">
-					<a href="javascript:PopUpHide_reg()" class="close">X</a>
+
+			<!-- Registration popup -->
+			<div class="reg-page" id="reg">
+				<div class="h-reg">
+					<div class="close">&#10060;</div>
 					<form method="POST" class="reg">
 						<ul>
 							<h3>Регистрация</h3>
@@ -142,10 +142,10 @@ require "./includes/auth_reg.php";
 				</div>
 			</div>
 		</div>
-
 		<div class="footer">
 			 © 2018 Чотка
 		</div>
 	</div>
+	<script src="./scripts/index.js"></script>
 </body>
 </html>
