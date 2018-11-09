@@ -71,7 +71,6 @@ require "./includes/auth-reg.php";
 		<div class="header">
 			<?php if (isset($_SESSION['logged_user'])): ?>
 				<a href="profile.php"><img src="<?php if($path_avatar != '') echo $path_avatar; else echo "avatars/no_avatar.jpg";?>" class="header_avatar" alt="avatar"></a><strong><?php echo $_SESSION['logged_user']->login  ?></strong>
-					<a href="logout.php" class="settings-btn-h logout">Выйти</a>
 					<a href="logout.php" class="btn-popup logout">Выйти</a>
 			<?php else : ?>
 			<div class="authorization" align="right">
@@ -142,20 +141,20 @@ require "./includes/auth-reg.php";
 				</div>
 			</div>
 			<div class="day-page">
-				<div class="day-date">
+<!-- 				<div class="day-date">
 					<script>
 					var daysWeek = [
 						'Пн','Вт','Ср',
-						'Чт','Пт','Пн',
-						'Пн',
+						'Чт','Пт','Сб',
+						'Вc',
 					];
 					let d = new Date();
 					$('.day-date').html(
 						daysWeek[d.getDay()]
-						+ '\n' + d.getDate() +
-						'.' + d.getMonth());
+						+ '\n' + (d.getDate() + 1 ) +
+						'.' + ( d.getMonth() + 1 ));
 					</script>
-				</div>
+				</div> -->
 			</div>
 		</div>
 		<script src='./stories/journal.js'></script>

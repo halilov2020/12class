@@ -1,8 +1,7 @@
 $(document).ready(function() {
   $.getJSON("./stories/sch.json", function(data) {
     let d = data.data;
-
-    for (let i = 0; i < d.length; i++) {
+    for (let i = 0; i < 5; i++) {
       let box = $('<div>')
         .addClass('box')
         .append($('<div>')
