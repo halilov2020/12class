@@ -141,20 +141,7 @@ require "./includes/auth-reg.php";
 				</div>
 			</div>
 			<div class="day-page">
-<!-- 				<div class="day-date">
-					<script>
-					var daysWeek = [
-						'Пн','Вт','Ср',
-						'Чт','Пт','Сб',
-						'Вc',
-					];
-					let d = new Date();
-					$('.day-date').html(
-						daysWeek[d.getDay()]
-						+ '\n' + (d.getDate() + 1 ) +
-						'.' + ( d.getMonth() + 1 ));
-					</script>
-				</div> -->
+
 			</div>
 		</div>
 		<script src='./stories/journal.js'></script>
