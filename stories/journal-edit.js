@@ -9,6 +9,25 @@ $(document).ready(function() {
     'Вc',
   ];
 
+  $('<button>', {
+    type: 'submit'
+  })
+    .html('Сохранить')
+    .addClass('settings-btn')
+    .attr('name', 'confirmDz')
+    .appendTo('.day-page')
+    .on("click", function() {
+      let a = [];
+      $('li.dz').each(function() {
+        a.push($(this).html());
+      });
+
+      var str = encodeURIComponent(a)
+      window.open(window.location.href + "?vals=" + str, "_self")
+    });
+
+
+
   $.getJSON("./stories/sch.json", function(data) {
     // get schedule for day
     for (var r = 0; r < 7; r++) {
@@ -23,7 +42,6 @@ $(document).ready(function() {
       var $dz = $("<ul>");
 
 
-
       var $dayDate = $("<div>").addClass('day-date')
         .html(
           daysWeek[r]
@@ -35,8 +53,6 @@ $(document).ready(function() {
           // ignore the day of the week, which is the
           // first item in the loaded 'schedule' data.
           // instead, aplly headers to both lists
-
-
           $subjs.html($("<strong>")
             .html('Предметы'));
           $tasks.html($("<strong>")
@@ -47,12 +63,13 @@ $(document).ready(function() {
             .html(day[i][1]) // full name
             .appendTo($ul);
 
-          $("<li>") // holds a task
-            .addClass('dz') // shortened name
+          $("<li>")
+            .addClass("dz")
+            .attr('contenteditable', 'true')
             .appendTo($dz);
+
         }
       });
-
       $subjs.append($ul); // add subjects
       $tasks.append($dz); // add hometask
 
@@ -65,17 +82,18 @@ $(document).ready(function() {
         .appendTo('.day-page');
         // get hometask from DB and shove it into proper li's
 
-
       if ((r + 1) === index) {
         div.css('backgroundColor', 'yellow');
       }
     }
     setDzs();
-  });
-})
+
+
+  })
+});
 
 function setDzs() {
-  var dzs = $('.dz');
+  var dzs = $('.dz'); // shortened name
 
   $.get('./dz.php', function(data) {
     let $obj = JSON.parse(data);
@@ -85,8 +103,8 @@ function setDzs() {
     }
 
     $.each(dzs, function(i, val) {
+      $(this).attr('id', i + 1);
       $(this).html($dz[i]);
-
-    });
+    })
   });
 }
