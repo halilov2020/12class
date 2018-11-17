@@ -7,7 +7,7 @@ $path_avatar = $sql_image->avatar;
 $data_auth = $_GET;
 if(isset($data_auth['do_login'])) {
 	$errors = array();
-	$user_auth = R::findOne('users','login = ?',array($data_auth['login']));
+	$user_auth = R::findOne('users', 'login = ?', array($data_auth['login']));
 
 	if ( $user_auth ) {
 		if( password_verify($data_auth['password'], $user_auth->password))

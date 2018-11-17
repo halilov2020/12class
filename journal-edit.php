@@ -1,7 +1,20 @@
 <?php
 require "./includes/db.php";
 require "./includes/auth-reg.php";
+if(isset($_GET['vals'])) {
+	$dzs = $_GET['vals'];
+	$p = explode(',',$dzs);
+	for ($i = 0 ; $i < count($p) ; $i++) {
+			$dz_item = R::findOne('dz', 'id = ?', [$i+1]); // это объект- нужно переделать в массив
+			$dz_item->value = $p[$i];
+			R::store($dz_item);
+		}
+
+
+};
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -141,13 +154,9 @@ require "./includes/auth-reg.php";
 				</div>
 			</div>
 			<div class="day-page">
-				<?php if($_SESSION['logged_user']) : ?>
-					<div class="edit-btn">
-						<a href="journal-edit.php" class="settings-btn">Редактировать</a>
-					</div>
-				<?php endif; ?>
+					<script src='./stories/journal-edit.js'></script>
+
 			</div>
-			<script src='./stories/journal.js'></script>
 		</div>
 
 

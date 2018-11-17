@@ -8,7 +8,7 @@ $path_avatar = $sql_image->avatar;
 $data = $_POST;
 $user = R::load('users', $_SESSION['logged_user']->id);
 $id_mysqli = $_SESSION['logged_user']->id;
-if(isset($data['confirm'])) {
+if(isset($data['confirm'])) { // Если кнопка "Сохранить" была нажата,то выполняется проверка и сохранение в БД
 	$errors = array();
 	if(trim($data['login']) == '' or ' ') {
 		$data['login'] = $user['login'];
@@ -300,7 +300,8 @@ if(isset($data['confirm'])) {
 											</label>
 										</div>
               						</li>
-									<li><input type="submit" name="confirm" value="Сохранить" class="settings-btn profile-edit-submit"><a href="profile.php" class="settings-btn profile-edit-escape">Отмена</a></li>
+									<li><input type="submit" name="confirm" value="Сохранить" class="settings-btn profile-edit-submit">
+										<a href="profile.php" class="settings-btn profile-edit-escape">Отмена</a></li>
 									</ul>
 								</form>
 							</div>
