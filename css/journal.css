@@ -2,7 +2,7 @@
 	display: block;
 	margin-left: 15px;
 	margin-right: 50px;
-	margin-top: 25px;
+	padding-top: 25px;
 }
 .day-date {
 	display: block;
@@ -81,4 +81,8 @@ ul li {
 }
 .edit-btn {
 	padding-left: 15px;
+}
+.back-btn {
+	margin-left: 10px;
+	width: 60px;
 }

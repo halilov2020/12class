@@ -154,14 +154,16 @@ if(isset($_GET['vals'])) {
 				</div>
 			</div>
 			<div class="day-page">
-					<script src='./stories/journal-edit.js'></script>
+					<?php if($_SESSION['logged_user']) : ?>
+					<script src='./stories/journal.js'></script>
 
+					<?php endif; ?>
 			</div>
 		</div>
 
 
 		<div class="footer">
-			 © 2018 Чотка
+			 © 2018
 		</div>
 	</div>
 </body>

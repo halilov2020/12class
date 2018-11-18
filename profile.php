@@ -174,16 +174,15 @@ $path_avatar = $sql_image->avatar;
 							<a href="profile-edit.php" class="settings-btn profile-edit">Редактировать профиль</a>
 						</div>
 				</div>
-			</div>
 			<?php else: ?>
 				<p><strong>Для того,чтобы увидеть эту страницу необходимо авторизоваться!</strong></p>
 			<?php endif; ?>
 		</div>
-
-
-		<div class="footer">
-			 C SRL "DIY"
 		</div>
+		<div class="footer">
+						  © 2018
+		</div>
+
 	</div>
 </body>
 </html>
