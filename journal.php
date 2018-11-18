@@ -148,6 +148,9 @@ require "./includes/auth-reg.php";
 				<?php endif; ?>
 			</div>
 			<script src='./stories/journal.js'></script>
+			<script>
+				createTables();
+			</script>
 		</div>
 
 
