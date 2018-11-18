@@ -89,12 +89,12 @@ require "./includes/auth-reg.php";
 							<h3>Авторизация</h3>
 							<li>
 								<label for="login"><strong>Введите логин:</strong></label>
-								<input type="text" name="login" value="<?php echo @$data_auth['login'] ?>">
+								<input type="text" required name="login" value="<?php echo @$data_auth['login'] ?>">
 								<span>*</span>
 							</li>
 							<li>
 								<label for="password"><strong>Введите пароль: </strong></label>
-								<input type="password" name="password">
+								<input type="password" required name="password">
 								<span>*</span>
 							</li>
 							<li>
@@ -115,22 +115,22 @@ require "./includes/auth-reg.php";
 							<h3>Регистрация</h3>
 							<li>
 								<label for="login"><strong>Введите логин:</strong></label>
-								<input type="text" name="login" minlength="5" value="<?php echo @$data_reg['login'] ?>">
+								<input type="text" required name="login" minlength="5" value="<?php echo @$data_reg['login'] ?>">
 								<span>* Пример: login123, jora12, kol9n</span>
 							</li>
 							<li>
 								<label for="email"><strong>Введите Email:</strong></label>
-								<input type="email" name="email"  value="<?php echo @$data_reg['email'] ?>">
+								<input type="email" required name="email"  value="<?php echo @$data_reg['email'] ?>">
 								<span>* Пример: ivan81@mail.ru, gerald@gmail.com</span>
 							</li>
 							<li>
 								<label for="password"><strong>Введите пароль:</strong></label>
-								<input type="password" name="password" minlength="6">
+								<input type="password" required name="password" minlength="6">
 								<span>* Пароль не должен содержать такие символы как : [!@#^%&*(<)>/'}"{,.]</span>
 							</li>
 							<li>
 								<label for="password_2"><strong>Подтвердите пароль:</strong></label>
-								<input type="password" name="password_2" minlength="6">
+								<input type="password" required name="password_2" minlength="6">
 								<span>* Введите пароль повторно,пароли должны совпадать!</span>
 							</li>
 							<li>

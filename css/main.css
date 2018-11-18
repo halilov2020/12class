@@ -141,6 +141,8 @@ body {
 	box-sizing: border-box;
 }
 .footer {
+	text-align: center;
+	justify-content: center;
 	position: relative;
 	bottom: 0px;
 	width: 100%;

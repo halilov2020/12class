@@ -12,7 +12,26 @@ require "./includes/auth-reg.php";
 	<link type="text/css" rel="stylesheet" href="./css/main.css?v1">
 	<link type="text/css" rel="stylesheet" href="./css/popup.css?v1">
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-
+	<script>
+    $(document).ready(function(){
+        PopUpHide_auth();
+    });
+    function PopUpShow_auth(){
+        $("#auth").show();
+	}
+	function PopUpHide_auth(){
+        $("#auth").hide();
+    }
+    $(document).ready(function(){
+        PopUpHide_reg();
+    });
+    function PopUpShow_reg(){
+		$("#reg").show();
+	}
+	function PopUpHide_reg(){
+	    $("#reg").hide();
+	}
+	 </script>
 </head>
 
 <body>
@@ -22,7 +41,7 @@ require "./includes/auth-reg.php";
 		<!-- Authentication popup -->
 		<div class="auth-page" id="auth">
 			<div class="h-auth">
-				<div class="close">&#10060;</div>
+				<a href="javascript:PopUpHide_auth()" class="close">X</a>
 				<form method="GET" class="auth">
 					<ul>
 						<h3>Авторизация</h3>
@@ -50,7 +69,7 @@ require "./includes/auth-reg.php";
 		<!-- Registration popup -->
 		<div class="reg-page" id="reg">
 			<div class="h-reg">
-				<div class="close">&#10060;</div>
+				<a href="javascript:PopUpHide_auth()" class="close">X</a>
 				<form method="POST" class="reg">
 					<ul>
 						<h3>Регистрация</h3>
@@ -138,18 +157,13 @@ require "./includes/auth-reg.php";
 			<!-- If not logged in -->
 			<?php else : ?>
 			<div class="authorization" align="right">
-		 		<div class="btn-popup login">Войти</div>
-		 		<div class="btn-popup register">Регистрация</div>
+				<a href="javascript:PopUpShow_auth()" class="btn-popup login">Войти</a>
+		 		<a href="javascript:PopUpShow_reg()" class="btn-popup register">Регистрация</a>
 			</div>
 			<?php endif; ?>
 		</div>
 		<div class="content">
-			<?php
-			if(isset($_POST['confirmDz'])) {
-				$dzs = $_POST;
-				echo $dzs[1];
-			}
-			?>
+
 		</div>
 		<div class="footer">
 			 © 2018 Чотка

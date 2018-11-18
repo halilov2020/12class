@@ -163,7 +163,7 @@ if(isset($_GET['vals'])) {
 
 
 		<div class="footer">
-			 © 2018 Чотка
+			 © 2018
 		</div>
 	</div>
 </body>

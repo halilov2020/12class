@@ -151,7 +151,7 @@ require "./includes/auth-reg.php";
 		</div>
 
 		<div class="footer">
-			 C SRL "DIY"
+			  © 2018
 		</div>
 	</div>
 </body>

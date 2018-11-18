@@ -3,9 +3,7 @@ if (window.location.pathname === "/journal-edit.php") {
     createTables();
 
 
-    $('<button>', {
-      type: 'submit'
-    })
+    $('<a>')
       .html('Сохранить')
       .addClass('settings-btn')
       .attr('name', 'confirmDz')
@@ -19,6 +17,15 @@ if (window.location.pathname === "/journal-edit.php") {
         var str = encodeURIComponent(a)
         window.open(window.location.href + "?vals=" + str, "_self")
       });
+
+    $('<a>')
+      .html('Назад')
+      .addClass('settings-btn back-btn')
+      .appendTo('.day-page')
+      .on('click', function() {
+        window.open(window.location.origin + '/journal.php', "_self")
+      });
+
   });
 }
 function createTables() {
