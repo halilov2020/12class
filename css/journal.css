@@ -55,7 +55,7 @@
 .tasks ul li:not(:last-child) {
 	border-bottom:1px ridge black;
 }
-ul li {
+.day-schedule ul li {
 	display: flex;
 	align-items:center;
 	justify-content: center;

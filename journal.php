@@ -100,7 +100,7 @@ require "./includes/auth-reg.php";
 							<li>
 								<button type="submit" name="do_login" class="submit">Войти</button>
 								<a href="register.php"><input type="button" value="Зарегистрироваться"></a>
-								<a href="/"><input type="button" value="На главную"></a>
+
 							</li>
 						</ul>
 					</form>
