@@ -1,0 +1,80 @@
+.hamburger-icon {
+background-color: white;
+justify-content: center;
+align-items: center;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+@media screen and (max-width:800px){
+  .nav-menu {
+    display:none;
+  }
+  .page {
+    padding-left: 0px;
+    margin-left: 0px;
+  }
+  .subjects ul li {
+    width: 100%;
+  }
+  .tasks ul li {
+    width: 100%;
+  }
+
+  .hamburger-icon {
+    width: 35px;
+    height: 5px;
+    margin: 6px 0;
+  }
+.hamburger-ico {
+  padding-left: 20px;
+  padding-right: 30px;
+}
+  .header {
+    display: flex;
+    justify-content: flex-start;
+    padding: 0px;
+  }
+  label.toggleMenu {
+    display: block;
+    padding-left: 20px;
+    padding-right: 30px;
+  }
+  hamburger-ico:checked {
+    background: blue;
+  }
+#m-menu {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: #20303e;
+  box-shadow: 1px 0px 6px 0px #20303e;
+  z-index: 5;
+}
+#m-menu ul li {
+  padding-top: 10px;
+  padding-left: 15px;
+  list-style: none;
+  align-items: center;
+  font-size: 32px;
+  color: white;
+}
+
+#m-menu ul {
+  padding-left: 0px;
+  margin-left: 0px;
+}
+#m-menu ul li a {
+    text-decoration: none;
+    align-items: center;
+    color: white;
+}
+#m-menu ul li a img {
+}
+.day-page {
+  margin-left: 5px;
+}
+
+}

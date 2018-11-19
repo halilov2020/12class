@@ -11,6 +11,7 @@ require "./includes/auth-reg.php";
 	<link type="text/css" rel="stylesheet" href="./css/main.css?v1">
 	<link type="text/css" rel="stylesheet" href="./css/popup.css?v1">
 	<link type="text/css" rel="stylesheet" href="./css/journal.css?v1">
+	<link type="text/css" rel="stylesheet" href="./css/media.css?v1">
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
 	<script>
@@ -31,6 +32,15 @@ require "./includes/auth-reg.php";
 	}
 	function PopUpHide_reg(){
 	    $("#reg").hide();
+	}
+	$(document).ready(function(){
+		HideMobileMenu();
+	});
+	function ShowMobileMenu() {
+		$("#m-menu").show();
+	}
+	function HideMobileMenu() {
+		$("#m-menu").hide();
 	}
 	 </script>
 </head>
@@ -67,11 +77,55 @@ require "./includes/auth-reg.php";
 			</div>
 		</div>
 	</div>
+
+	<div id="m-menu" hidden>
+		<ul>
+			<li><a class="mobile-menu-li" href="javascript:HideMobileMenu()">
+				<img src="./img/cancel-m.png">
+				<span>Закрыть</span>
+			</a>
+		</li>
+			<li><a class="mobile-menu-li" href="index.php">
+				<img src="./img/home-m.png">
+				<span>Главная</span>
+			</a></li>
+			<li><a class="mobile-menu-li" href="schedule.php">
+			<img src="./img/list-m.png">
+				<span>Расписание</span>
+			</a></li>
+			<li><a class="mobile-menu-li" href="journal.php">
+				<img src="./img/book-m.png">
+				<span>Дневник</span>
+			</a></li>
+			<li><a class="mobile-menu-li" href="calendar.php">
+			<img src="./img/calendar-m.png">
+				<span>Календарь</span>
+			</a></li>
+			<li><a class="mobile-menu-li" href="settings.php">
+			<img src="./img/settings-m.png">
+				<span>Настройки</span>
+			</a></li>
+			<li><a class="mobile-menu-li" href="profile.php">
+			<img src="./img/profile-m.png">
+				<span>Профиль</span>
+			</a></li>
+
+		</ul>
+	</div>
 	<div class="page">
 		<div class="header">
+
+				<div class="hamburger-ico" onclick="javascript:ShowMobileMenu()">
+						<div class="hamburger-icon"></div>
+						<div class="hamburger-icon"></div>
+						<div class="hamburger-icon"></div>
+					</div>
+
+
+
 			<?php if (isset($_SESSION['logged_user'])): ?>
-				<a href="profile.php"><img src="<?php if($path_avatar != '') echo $path_avatar; else echo "avatars/no_avatar.jpg";?>" class="header_avatar" alt="avatar"></a><strong><?php echo $_SESSION['logged_user']->login  ?></strong>
-					<a href="logout.php" class="btn-popup logout">Выйти</a>
+					<a href="profile.php"><img src="<?php if($path_avatar != '') echo $path_avatar; else echo "avatars/no_avatar.jpg";?>" class="header_avatar" alt="avatar"></a><strong><?php echo $_SESSION['logged_user']->login  ?></strong>
+						<a href="logout.php" class="btn-popup logout">Выйти</a>
 			<?php else : ?>
 			<div class="authorization" align="right">
 		 		<a href="javascript:PopUpShow_auth()" class="btn-popup login">Войти</a>
