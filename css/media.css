@@ -90,4 +90,7 @@ input[type="checkbox"] {
 .auth ul, .reg ul {
   padding-left: 10px;
 }
+.schedule-page {
+  padding:0px;
+}
 }
