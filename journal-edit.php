@@ -1,18 +1,6 @@
 <?php
 require "./includes/db.php";
 require "./includes/auth-reg.php";
-if(isset($_GET['vals'])) {
-	$dzs = $_GET['vals'];
-	$p = explode(',',$dzs);
-	for ($i = 0 ; $i < count($p) ; $i++) {
-			$dz_item = R::findOne('dz', 'id = ?', [$i+1]); // это объект- нужно переделать в массив
-			$dz_item->value = $p[$i];
-			R::store($dz_item);
-		}
-
-
-};
-
 ?>
 
 <!DOCTYPE html>

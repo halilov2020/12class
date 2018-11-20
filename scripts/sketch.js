@@ -1,10 +1,10 @@
-let targets = []; // array to hold target objects
-let hit = false;
-let hitframe = 0;
-let hitX;
-let hitY;
-let offSet = 0;
-let img;
+var targets = []; // array to hold target objects
+var hit = false;
+var hitframe = 0;
+var hitX;
+var hitY;
+var offSet = 0;
+var img;
 
 function setup() {
   var canvas = createCanvas(windowWidth - 200, windowHeight - 150);

@@ -14,8 +14,11 @@ if (window.location.pathname === "/journal-edit.php") {
           a.push($(this).html());
         });
 
-        var str = encodeURIComponent(a)
-        window.open(window.location.href + "?vals=" + str, "_self")
+        $.post('/data-management/journal-save.php', {
+          dzs: a
+        }, function(data) {
+          console.log(data);
+        })
       });
 
     $('<a>')
@@ -28,6 +31,7 @@ if (window.location.pathname === "/journal-edit.php") {
 
   });
 }
+
 function createTables() {
   let d = new Date();
   var index = d.getDay();
@@ -53,8 +57,8 @@ function createTables() {
 
       var $dayDate = $("<div>").addClass('day-date')
         .html(
-          daysWeek[r]
-          + '\n' + (firstDayWeek + r) +
+          daysWeek[r] +
+          '\n' + (firstDayWeek + r) +
           '.' + (d.getMonth() + 1));
 
       $.each(day, function(i, val) {
@@ -104,6 +108,7 @@ function createTables() {
 
   })
 }
+
 function setDzs() {
   var dzs = $('.dz'); // shortened name
   $.get('./dz.php', function(data) {
