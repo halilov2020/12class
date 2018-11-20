@@ -15,6 +15,4 @@
   } else {
     echo "not defined";
   }
-
-
 ?>

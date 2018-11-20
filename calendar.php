@@ -1,7 +1,6 @@
 <?php
 require "./includes/db.php";
 require "./includes/auth-reg.php";
-
 ?>
 <!DOCTYPE html>
 <html lang="en">

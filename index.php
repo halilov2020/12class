@@ -181,7 +181,11 @@ require "./includes/auth-reg.php";
 			</div>
 			<?php endif; ?>
 		</div>
-		<div class="content">
+		<div class="content" style="padding:30px">
+			<button class="more-users">More</button>
+			<ul class="user-list">
+		     <script src="./scripts/loadUsers.js"></script>
+			</ul>
 
 		</div>
 		<div class="footer">
