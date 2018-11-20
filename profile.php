@@ -12,28 +12,11 @@ $path_avatar = $sql_image->avatar;
 	<title>12 КЛАСС</title>
 	<link type="text/css" rel="stylesheet" href="./css/main.css?v1">
 	<link type="text/css" rel="stylesheet" href="./css/popup.css?v1">
+	<link type="text/css" rel="stylesheet" href="./css/media.css?v1">
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
-	<script>
-    $(document).ready(function(){
-        PopUpHide_auth();
-    });
-    function PopUpShow_auth(){
-        $("#auth").show();
-	}
-	function PopUpHide_auth(){
-        $("#auth").hide();
-    }
-    $(document).ready(function(){
-        PopUpHide_reg();
-    });
-    function PopUpShow_reg(){
-		$("#reg").show();
-	}
-	function PopUpHide_reg(){
-	    $("#reg").hide();
-	}
-	 </script>
+	<script src="./stories/popups.js"></script>
+	
 </head>
 <body>
 	<div class="nav-menu">
@@ -67,8 +50,47 @@ $path_avatar = $sql_image->avatar;
 			</div>
 		</div>
 	</div>
+	<div id="m-menu" hidden>
+		<ul>
+			<li><a class="mobile-menu-li" href="javascript:HideMobileMenu()">
+				<img src="./img/cancel-m.png">
+				<span>Закрыть</span>
+			</a>
+		</li>
+			<li><a class="mobile-menu-li" href="index.php">
+				<img src="./img/home-m.png">
+				<span>Главная</span>
+			</a></li>
+			<li><a class="mobile-menu-li" href="schedule.php">
+			<img src="./img/list-m.png">
+				<span>Расписание</span>
+			</a></li>
+			<li><a class="mobile-menu-li" href="journal.php">
+				<img src="./img/book-m.png">
+				<span>Дневник</span>
+			</a></li>
+			<li><a class="mobile-menu-li" href="calendar.php">
+			<img src="./img/calendar-m.png">
+				<span>Календарь</span>
+			</a></li>
+			<li><a class="mobile-menu-li" href="settings.php">
+			<img src="./img/settings-m.png">
+				<span>Настройки</span>
+			</a></li>
+			<li><a class="mobile-menu-li" href="profile.php">
+			<img src="./img/profile-m.png">
+				<span>Профиль</span>
+			</a></li>
+
+		</ul>
+	</div>
 	<div class="page">
 		<div class="header">
+			<div class="hamburger-ico" onclick="javascript:ShowMobileMenu()">
+					<div class="hamburger-icon"></div>
+					<div class="hamburger-icon"></div>
+					<div class="hamburger-icon"></div>
+				</div>
 			<?php if (isset($_SESSION['logged_user'])): ?>
 				<a href="profile.php"><img src="<?php if($path_avatar != '') echo $path_avatar; else echo "avatars/no_avatar.jpg";?>" class="header_avatar" alt="avatar"></a><strong><?php echo $_SESSION['logged_user']->login  ?></strong>
 					<a href="logout.php" class="btn-popup logout">Выйти</a>
@@ -99,9 +121,9 @@ $path_avatar = $sql_image->avatar;
 								<span>*</span>
 							</li>
 							<li>
-								<button type="submit" name="do_login" class="submit">Войти</button>
-								<a href="register.php"><input type="button" value="Зарегистрироваться"></a>
-								<a href="/"><input type="button" value="На главную"></a>
+								<button type="submit" name="do_login" class="settings-btn">Войти</button>
+								<a href="javascript:PopUpHide_auth(), PopUpShow_reg()"><input type="button" value="Зарегистрироваться" class="settings-btn"></a>
+
 							</li>
 						</ul>
 					</form>
@@ -134,7 +156,7 @@ $path_avatar = $sql_image->avatar;
 								<span>* Введите пароль повторно,пароли должны совпадать!</span>
 							</li>
 							<li>
-								<button type="submit" name="sign_up">Зарегистрироваться</button>
+								<button type="submit" name="sign_up" class="settings-btn">Зарегистрироваться</button> <a href="javascript:PopUpHide_reg(), PopUpShow_auth()" class="settings-btn">Войти</a>
 							</li>
 						</ul>
 					</form>
