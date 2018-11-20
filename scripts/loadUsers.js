@@ -30,13 +30,9 @@ function loadBatch() {
 function addBatch() {
   loadBatch().then(function(users) {
     for (let i = 0; i < users.length; i++) {
-      console.log($('<img>').attr('src', users[i].avatar)[0]);
       $('<li>').html(users[i].login)
         .append(
-          $('<img>').attr('src', users[i].avatar).css({
-            'width': 100,
-            'height': 100
-          })
+          $('<img>').attr('src', users[i].avatar)
       ).appendTo('ul.user-list');
     }
   });
