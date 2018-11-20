@@ -14,35 +14,7 @@ require "./includes/auth-reg.php";
 	<link type="text/css" rel="stylesheet" href="./css/media.css?v1">
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
-	<script>
-    $(document).ready(function(){
-        PopUpHide_auth();
-    });
-    function PopUpShow_auth(){
-        $("#auth").show();
-	}
-	function PopUpHide_auth(){
-        $("#auth").hide();
-    }
-    $(document).ready(function(){
-        PopUpHide_reg();
-    });
-    function PopUpShow_reg(){
-		$("#reg").show();
-	}
-	function PopUpHide_reg(){
-	    $("#reg").hide();
-	}
-	$(document).ready(function(){
-		HideMobileMenu();
-	});
-	function ShowMobileMenu() {
-		$("#m-menu").show();
-	}
-	function HideMobileMenu() {
-		$("#m-menu").hide();
-	}
-	 </script>
+	<script src="./stories/popups.js"></script>
 </head>
 
 <body>
@@ -152,8 +124,8 @@ require "./includes/auth-reg.php";
 								<span>*</span>
 							</li>
 							<li>
-								<button type="submit" name="do_login" class="submit">Войти</button>
-								<a href="register.php"><input type="button" value="Зарегистрироваться"></a>
+								<button type="submit" name="do_login" class="settings-btn">Войти</button>
+								<a href="javascript:PopUpHide_auth(), PopUpShow_reg()"><input type="button" value="Зарегистрироваться" class="settings-btn"></a>
 
 							</li>
 						</ul>
@@ -188,7 +160,7 @@ require "./includes/auth-reg.php";
 								<span>* Введите пароль повторно,пароли должны совпадать!</span>
 							</li>
 							<li>
-								<button type="submit" name="sign_up">Зарегистрироваться</button>
+								<button type="submit" name="sign_up" class="settings-btn">Зарегистрироваться</button> <a href="javascript:PopUpHide_reg(), PopUpShow_auth()" class="settings-btn">Войти</a>
 							</li>
 						</ul>
 					</form>

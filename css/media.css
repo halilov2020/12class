@@ -76,5 +76,18 @@ input[type="checkbox"] {
 .day-page {
   margin-left: 5px;
 }
-
+.auth-page .h-auth{
+  width: 350px;
+  height: 250px;
+  top: 40%;
+  left: 45%;
+}
+ .reg-page .h-reg {
+   height: 350px;
+   top: 40%;
+   left: 45%;
+ }
+.auth ul, .reg ul {
+  padding-left: 10px;
+}
 }
