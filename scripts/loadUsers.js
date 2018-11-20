@@ -30,11 +30,29 @@ function loadBatch() {
 function addBatch() {
   loadBatch().then(function(users) {
     for (let i = 0; i < users.length; i++) {
-      $('<li>').html(users[i].login)
-        .append(
-          $('<img>').attr('src', users[i].avatar)
-      ).appendTo('ul.user-list');
+      $('<li>').addClass('user')
+        .append($('<div>').addClass('cont')
+          .css('backgroundColor', randomColor())
+          .append(
+            $('<img>').attr('src', users[i].avatar)
+        ).append(
+          $('<div>').append($('<span>').html(users[i].login)
+          ))).appendTo('ul.user-list');
     }
   });
 
+}
+
+
+function randomColor() {
+  let result = 'rgb(';
+  for (let i = 0; i < 3; i++) {
+    result += ~~(Math.random() * 255);
+    if (i < 2) {
+      result += ','
+    }
+  }
+  result += ')';
+  console.log(result);
+  return result;
 }

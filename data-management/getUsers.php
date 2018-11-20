@@ -16,6 +16,8 @@
   }
 
   function openCollection($ind, $bat) {
+
+    $default = 'avatars/no_avatar.jpg';
     $u_d = array();
     $u = array();
     $u = R::exportAll(R::findAll( 'users', 'ORDER BY id'));
@@ -25,7 +27,7 @@
       }
       $j = $i + $ind;
       $u_d[$i]['login'] = $u[$j]['login'];
-      $u_d[$i]['avatar'] = $u[$j]['avatar'];
+      $u_d[$i]['avatar'] = $u[$j]['avatar'] != "" ? $u[$j]['avatar'] : $default;
       $u_d[$i]['id'] = $u[$j]['id'];
     }
     return $u_d;
