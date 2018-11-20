@@ -24,9 +24,6 @@
         return $u_d;
       }
       $j = $i + $ind;
-      //$u_d[$i] = new User($u[$j]['login'],$u[$j]['avatar'],$u[$j]['id']);
-
-      $j = $i + $ind;
       $u_d[$i]['login'] = $u[$j]['login'];
       $u_d[$i]['avatar'] = $u[$j]['avatar'];
       $u_d[$i]['id'] = $u[$j]['id'];
