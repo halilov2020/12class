@@ -1,3 +1,6 @@
+ul {
+	margin: 0;
+}
 .day-page {
 	display: block;
 	margin-left: 15px;
@@ -5,49 +8,112 @@
 	padding-top: 25px;
 }
 .day-date {
-	display: block;
-	width: 40px;
-	height: 40px;
-	border-radius: 12px;
-	border: 1px ridge black;
-	margin-top: 40px;
+	transform: rotate(180deg);
+	vertical-align: middle;
+	font-size: 1.8em;
+	width: fit-content;
+}
+.day-div {
+	writing-mode: vertical-lr;
+	text-orientation: mixed;
+	width: 30px;
+	height: inherit;
 	text-align: center;
+	vertical-align: baseline;
+	padding-left: 8px;
+	padding-right: 8px;
+	background-color: lightskyblue;
+}
+.subjects, .tasks {
+	text-align: center;
+	padding: 16px;
+	padding-top: 0;
+	padding-left: 0;
+
+}
+.subjects {
+	padding-left: 16px;
+	width: 200px;
+}
+.tasks {
+	width: 400px;
+}
+@media screen and (max-width:950px){
+	.tasks {
+	   width: 300px;
+	}
+}
+@media screen and (max-width:850px){
+	.tasks {
+	   width: 270px !important;
+	}
+	.subjects {
+		width: 180px !important;
+	}
+}
+@media screen and (max-width:800px){
+	.tasks {
+	   width: 280px !important;
+	}
+	.subjects {
+		width: 190px !important;
+	}
+}
+@media screen and (max-width:600px){
+	.tasks {
+	   max-width: 250px !important;
+	}
+	.subjects {
+		width: 150px !important;
+	}
+}
+@media screen and (max-width:525px){
+	.tasks {
+	  width: 220px !important;
+	}
+	.subjects {
+		width: auto !important;
+	}
+}
+@media screen and (max-width:450px){
+	.tasks {
+	  width: auto !important;
+	}
+	.subjects {
+		width: auto !important;
+	}
+}
+.subjects div, .tasks div {
+	padding: 10px;
+	font-size: 20px;
+	/* font-weight: bold; */
+	vertical-align: center;
 }
 .subjects ul {
 	list-style: none;
 	padding: 0px;
-	margin-left: 20px;
-	margin-top: 20px;
 	border: 2px ridge black;
 }
 .subjects ul li {
 	text-align: center;
 	height: 25px;
-	width: 200px;
 }
 .subjects ul li:not(:first-child) {
-	border-top:1px ridge black;
+	border-top: 1px ridge black;
 }
 .subjects ul li:not(:last-child) {
-	border-bottom:1px ridge black;
-}
-.subjects strong {
-	margin-left: 20px;
-}
-.tasks strong {
-	margin-left: 20px;
+	border-bottom: 1px ridge black;
 }
 .tasks ul {
 	list-style: none;
 	padding: 0px;
-	margin-left: 20px;
-	margin-top: 20px;
 	border: 2px ridge black;
 }
 .tasks ul li {
+	overflow-y: hidden;
+	overflow-x: hidden;
 	text-align: center;
 	height: 25px;
-	width: 400px;
 }
 .tasks ul li:not(:first-child) {
 	border-top:1px ridge black;
@@ -73,11 +139,13 @@
 	flex-direction: column;
 }
 .day-schedule {
+	background-color: floralwhite;
+	box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+	margin-bottom: 20px;
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
 	width: fit-content;
-	padding: 15px;
 }
 .edit-btn {
 	padding-left: 15px;

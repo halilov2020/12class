@@ -66,10 +66,10 @@ function createTables() {
           // ignore the day of the week, which is the
           // first item in the loaded 'schedule' data.
           // instead, aplly headers to both lists
-          $subjs.html($("<strong>")
+          $subjs.html($("<div>")
             .html('Предметы'));
-          $tasks.html($("<strong>")
-            .html('Домашнее задание'));
+          $tasks.html($("<div>")
+            .html('Задание'));
         } else {
           $("<li>") // holds a subject
             .addClass(day[i][0]) // shortened name
@@ -90,10 +90,12 @@ function createTables() {
       $subjs.append($ul); // add subjects
       $tasks.append($dz); // add hometask
 
-      var div = $("<div>").addClass('day-schedule');
+      let div = $("<div>").addClass('day-schedule');
+      let divDays = $("<div>").addClass('day-div');
+      $dayDate.appendTo(divDays);
 
       div
-        .append($dayDate)
+        .append(divDays)
         .append($subjs)
         .append($tasks)
         .appendTo('.day-page');

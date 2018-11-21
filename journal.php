@@ -8,6 +8,7 @@ require "./includes/auth-reg.php";
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="UTF-8" http-equiv="Cache-Control" content="no-cache">
 	<title>12 КЛАСС</title>
+	<link type="text/css" rel="stylesheet" href="./css/sch.css">
 	<link type="text/css" rel="stylesheet" href="./css/main.css?v1">
 	<link type="text/css" rel="stylesheet" href="./css/popup.css?v1">
 	<link type="text/css" rel="stylesheet" href="./css/journal.css?v1">

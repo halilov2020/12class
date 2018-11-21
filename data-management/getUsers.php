@@ -20,7 +20,7 @@
     $default = 'avatars/no_avatar.jpg';
     $u_d = array();
     $u = array();
-    $u = R::exportAll(R::findAll( 'users', 'ORDER BY id'));
+    $u = R::exportAll(R::findAll( 'users', 'ORDER BY id' ));
     for ($i = 0; $i < $bat; $i++) {
       if ($i + $ind >= count($u)) {
         return $u_d;

@@ -1,0 +1,34 @@
+
+  .fr {
+    background-color: rgb(86, 179, 189);
+  }
+  .ru-l, .w-lit {
+    background-color: rgb(237, 81, 140);
+  }
+  .phz, .math{
+    background-color: rgb(245, 188, 109);
+  }
+  .l-ro, .ro {
+    background-color: rgb(147, 103, 196)
+  }
+  .en {
+    background-color: rgb(229, 88, 241);
+  }
+  .hist {
+    background-color: rgb(200, 195, 60)
+  }
+  .civ, .r-lic{
+    background-color: rgb(209, 74, 74)
+  }
+  .bio, .chem{
+    background-color: rgb(124, 184, 64)
+  }
+  .geo, .eco {
+    background-color: rgb(98, 145, 217);
+  }
+  .inf {
+    background-color: rgb(170, 170, 170)
+  }
+  .ed-fiz {
+    background-color: rgb(195, 230, 98)
+  }

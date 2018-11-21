@@ -16,11 +16,11 @@ input[type="checkbox"] {
     padding-left: 0px;
     margin-left: 0px;
   }
-  .subjects ul li {
-    width: 100%;
+  .subjects {
+    /* width: 100%; */
   }
-  .tasks ul li {
-    width: 100%;
+  .tasks {
+    /* width: 100%; */
   }
 
   .hamburger-icon {
