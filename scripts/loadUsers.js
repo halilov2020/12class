@@ -1,10 +1,13 @@
 var _index = 0;
 var batchSize = 2;
 var all = false;
+var pending = false;
 
 $(document).ready(function() {
   $('.more-users').click(function() {
-    addBatch();
+    if (!pending) {
+      addBatch();
+    }
   });
 })
 
@@ -28,6 +31,7 @@ function loadBatch() {
 }
 
 function addBatch() {
+  pending = true;
   loadBatch().then(function(users) {
     for (let i = 0; i < users.length; i++) {
       $('<li>').addClass('user')
@@ -39,8 +43,8 @@ function addBatch() {
           $('<div>').append($('<span>').html(users[i].login)
           ))).appendTo('ul.user-list');
     }
+    pending = false;
   });
-
 }
 
 
