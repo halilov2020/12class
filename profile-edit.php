@@ -1,5 +1,5 @@
 <?php
-require "./includes/db.php";
+require "./config.php";
 require "./includes/auth-reg.php";
 
 $sql_image = R::load('users', $_SESSION['logged_user']->id);

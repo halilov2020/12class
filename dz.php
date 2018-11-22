@@ -1,5 +1,5 @@
 <?php
-require "./includes/db.php";
+require "./config.php";
 
 $dz_items = R::findAll('dz');
 

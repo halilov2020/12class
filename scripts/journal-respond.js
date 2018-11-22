@@ -1,10 +1,12 @@
+const edit = window.location.pathname === '/journal-edit.php';
+
 function setMouseEvents() {
   $('.subjects li').mouseenter(function() {
     // get the sequencial index of this li
     let index = getIndex(this);
     // assert no error
     if (index !== null) {
-      $('.task-more').remove();
+      removeMore();
 
       let tasks = $(this)
         .parent() // tab three steps above
@@ -29,9 +31,13 @@ function setMouseEvents() {
           border: '2px solid black',
           backgroundColor: 'floralwhite'
         })
+        .attr({
+          contenteditable: edit,
+        })
+        .data('index', index)
     }
   })
-  // remove one task expansion if left subjects div
+  // remove task expansion if cursor left subjects div
   // at the left, top, or bottom side
   $('.subjects').mouseleave(function(event) {
     let tasks = $(this).parent().find('.tasks');
@@ -42,11 +48,11 @@ function setMouseEvents() {
     if (event.clientX < borders.left - 2 ||
       event.clientY < borders.top - toTop ||
       event.clientY > borders.top - toTop + tasks.outerHeight()) {
-      $('.task-more').remove();
+      removeMore();
       tasks.find('ul').show();
     }
   })
-  // remove one task expansion if left tasks div
+  // remove task expansion if cursor left tasks div
   // at the right, top, or bottom side
   $('.tasks').mouseleave(function(event) {
     let subjs = $(this).parent().find('.subjects');
@@ -57,7 +63,7 @@ function setMouseEvents() {
     if (event.clientX > borders.left + subjs.outerWidth() ||
       event.clientY < borders.top - toTop ||
       event.clientY > borders.top - toTop + subjs.outerHeight()) {
-      $('.task-more').remove();
+      removeMore();
       $(this).find('ul').show();
     }
   })
@@ -79,4 +85,20 @@ function getIndex(el) {
       });
     return index;
   }
+}
+// remove task expansion while saving text
+// if in journal-edit.php
+function removeMore() {
+  let more = $('.task-more');
+  if (edit) { // if in journal-edit.php
+    let text = more.html();
+    let i = more.data('index');
+    more
+      .parent()
+      .find('ul')
+      .find('li')
+      .get(i)
+      .innerHTML = text;
+  }
+  more.remove();
 }

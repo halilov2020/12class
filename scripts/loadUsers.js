@@ -23,7 +23,6 @@ function loadBatch() {
             all = true;
             $('.more-users').remove();
           }
-          console.log(json);
           resolve(json);
         });
     }
@@ -57,6 +56,5 @@ function randomColor() {
     }
   }
   result += ')';
-  console.log(result);
   return result;
 }

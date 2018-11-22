@@ -1,6 +1,6 @@
 <?php
-require "./includes/db.php";
 require "./includes/auth-reg.php";
+require "./config.php";
 
 ?>
 <!DOCTYPE html>

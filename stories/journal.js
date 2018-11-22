@@ -100,7 +100,6 @@ function createTables() {
         .append($tasks)
         .appendTo('.day-page');
 
-
       if ((r + 1) === index) {
         div.css('backgroundColor', 'yellow');
       }
