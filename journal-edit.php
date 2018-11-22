@@ -166,7 +166,7 @@ require "./includes/auth-reg.php";
 			<div class="day-page">
 					<?php if($_SESSION['logged_user']) : ?>
 					<script src='./stories/journal.js'></script>
-
+					<script src="./scripts/journal-respond.js"></script>
 					<?php endif; ?>
 			</div>
 		</div>
@@ -176,5 +176,6 @@ require "./includes/auth-reg.php";
 			 © 2018
 		</div>
 	</div>
+
 </body>
 </html>

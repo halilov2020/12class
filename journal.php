@@ -174,6 +174,7 @@ require "./includes/auth-reg.php";
 					</div>
 				<?php endif; ?>
 			</div>
+			<script src="./scripts/journal-respond.js"></script>
 			<script src='./stories/journal.js'></script>
 			<script>
 				createTables();
@@ -185,5 +186,6 @@ require "./includes/auth-reg.php";
 			 © 2018 Чотка
 		</div>
 	</div>
+
 </body>
 </html>

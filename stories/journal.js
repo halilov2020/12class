@@ -107,6 +107,7 @@ function createTables() {
     }
     // get hometask from DB and shove it into proper li's
     setDzs();
+    setMouseEvents();
 
   })
 }

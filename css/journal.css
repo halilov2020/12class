@@ -2,24 +2,17 @@ ul {
 	margin: 0;
 }
 .day-page {
-	display: block;
 	margin-left: 15px;
-	margin-right: 50px;
 	padding-top: 25px;
 }
 .day-date {
 	transform: rotate(180deg);
-	vertical-align: middle;
 	font-size: 1.8em;
-	width: fit-content;
+	/* width: fit-content; */
 }
 .day-div {
 	writing-mode: vertical-lr;
-	text-orientation: mixed;
-	width: 30px;
-	height: inherit;
 	text-align: center;
-	vertical-align: baseline;
 	padding-left: 8px;
 	padding-right: 8px;
 	background-color: lightskyblue;
@@ -29,7 +22,6 @@ ul {
 	padding: 16px;
 	padding-top: 0;
 	padding-left: 0;
-
 }
 .subjects {
 	padding-left: 16px;
@@ -96,7 +88,8 @@ ul {
 }
 .subjects ul li {
 	text-align: center;
-	height: 25px;
+
+	overflow-y: hidden;
 }
 .subjects ul li:not(:first-child) {
 	border-top: 1px ridge black;
@@ -113,7 +106,6 @@ ul {
 	overflow-y: hidden;
 	overflow-x: hidden;
 	text-align: center;
-	height: 25px;
 }
 .tasks ul li:not(:first-child) {
 	border-top:1px ridge black;
@@ -129,14 +121,8 @@ ul {
 }
 .content {
 	height: 100% !important;
-	min-height:100%;
-	width: auto;
 	background-color: #e6e3e6;
 	padding-bottom: 200px;
-}
-.day-name {
-	display: flex;
-	flex-direction: column;
 }
 .day-schedule {
 	background-color: floralwhite;
