@@ -1,17 +1,35 @@
 <?php
 require "../config.php";
-require (ROOT_DIR."/includes/db.php");
 
 header('Content-Type: text/html; charset=utf-8');
-$d = time() + date(2*24*60*60);
+$current_time = time();
+$saturday = strtotime('next Saturday');
 
-if ($d == 6 or 7) {
-  $load_table = R::find('dz');
-  $array_dz = [];
-  for($i=1;$i<=49;$i++){
-    $array_dz[$i] = $load_table[$i]->value;
+if ($current_time == $saturday) {
+  $dz_curr = R::find('dz');
+  $array_dz_curr = [];
+  for($i=1; $i<=49; $i++){
+    $array_dz_curr[$i] = $dz_curr[$i]->value;
   }
-  $string_dz = json_encode($array_dz);
-  echo $string_dz;
+  for($u=1; $u<=49; $u++){
+    $dz_prev = R::load('dzprev', $u);
+    $dz_prev->value = $array_dz_curr[$u];
+    R::store($dz_prev);
+  }
+
+  $array_dz_next = [];
+  $dz_next = R::find('dznext');
+  for($k=1; $k<=49; $k++) {
+    $array_dz_next[$k] = $dz_next[$k]->value;
+    $next_clean = R::load('dznext',$k);
+    $next_clean->value = '-';
+    R::store($next_clean);
+  }
+
+  for ($l=1; $l<=49; $l++) {
+    $dz_curr_from_next = R::load('dz',$l);
+    $dz_curr_from_next->value = $array_dz_next[$l];
+    R::store($dz_curr_from_next);
+  }
 }
 ?>
