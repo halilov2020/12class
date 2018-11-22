@@ -328,10 +328,10 @@ if(isset($data['confirm'])) { // Если кнопка "Сохранить" бы
 							</div>
 						</div>
 				</div>
-			</div>
 			<?php else: ?>
 				<p><strong>Для того,чтобы увидеть эту страницу необходимо авторизоваться!</strong></p>
 			<?php endif; ?>
+			</div>
 		</div>
 
 
