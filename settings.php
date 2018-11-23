@@ -24,7 +24,7 @@ require "./includes/auth-reg.php";
 		<div class="auth-page" id="auth">
 			<div class="h-auth">
 				<a href="javascript:PopUpHide_auth()" class="close">X</a>
-				<form method="GET" class="auth">
+				<form method="POST" class="auth">
 					<ul>
 						<h3>Авторизация</h3>
 						<li>

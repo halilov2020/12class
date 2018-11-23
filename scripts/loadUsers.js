@@ -1,5 +1,5 @@
 var _index = 0;
-var batchSize = 2;
+const batchSize = 4;
 var all = false;
 var pending = false;
 
@@ -33,17 +33,52 @@ function addBatch() {
   pending = true;
   loadBatch().then(function(users) {
     for (let i = 0; i < users.length; i++) {
-      $('<li>').addClass('user')
-        .append($('<div>').addClass('cont')
-          .css('backgroundColor', randomColor())
-          .append(
-            $('<img>').attr('src', users[i].avatar)
-        ).append(
-          $('<div>').append($('<span>').html(users[i].login)
-          ))).appendTo('ul.user-list');
+      $('<li>')
+        .addClass('user')
+        .append(
+          $('<div>')
+            .addClass('cont')
+            .css('backgroundColor', randomColor())
+            .append(
+              $('<img>')
+                .attr('src', users[i].avatar)
+          ).append(
+            $('<div>')
+              .append(
+                $('<span>')
+                  .html(users[i].login)
+            )))
+        .appendTo('ul.user-list')
     }
+    let toAnimate = $('.cont')
+      .not('.done')
+      .css({
+        position: 'relative',
+        top: 200,
+        opacity: 0,
+      })
+
+    animate(toAnimate);
+
     pending = false;
   });
+}
+
+function animate(els) {
+  if (els.length === 0) {
+    return;
+  }
+  $(els.get(0)).animate({
+    top: 0,
+    opacity: 1
+  }, {
+    transition: 'top 200ms cubic-bezier(0.39,0.7,0.38,0.93), opacity 200ms linear',
+    complete: function() {
+      $(this).addClass('done');
+      els.splice(0, 1);
+      animate(els);
+    }
+  })
 }
 
 
