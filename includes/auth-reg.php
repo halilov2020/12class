@@ -29,7 +29,7 @@ if(isset($data['do_login'])) {
 }
 
 // Register
-if( $data['sign_up'] ) {
+if(isset($data['sign_up'])) {
 	$errors = array();
 
 	// Validate input data

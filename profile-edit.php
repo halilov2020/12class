@@ -3,17 +3,14 @@ require "./config.php";
 require (ROOT_DIR."/includes/auth-reg.php");
 $user = R::load('users', $_SESSION['logged_user']->id);
 $path_avatar = $user->avatar;
-
 if(isset($_POST['confirm'])) { // Если кнопка "Сохранить" была нажата,то выполняется проверка и сохранение в БД
 	$data_pe = $_POST;
 	$error_pedit = array();
 	if(trim($data_pe['login']) == '') {
 		$data_pe['login'] = $user['login'];
-		echo "helloworld";
 	}
 	if(trim($data_pe['real_name']) == '') {
 		$data_pe['real_name'] = $user['real_name'];
-		echo "helloworld";
 	}
 	if($data_pe['age'] == '') {
 		$data_pe['age'] = $user['age'];
