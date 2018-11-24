@@ -268,7 +268,7 @@ if(isset($_POST['confirm'])) { // Если кнопка "Сохранить" б�
 									<select name="age" id="age">
 									 <option value="<?php echo @$user['age']?>"></option>
 									 <script>
-									 let age = document.getElementById('age';)
+									 let age = document.getElementById('age')
 									 for (let i = 1; i < 50; i++) {
 										 let option = document.createElement('option');
 										 option.value = i;
