@@ -45,7 +45,7 @@ function setMouseEvents() {
     let toTop = $(window).scrollTop();
 
     // if moved from objects not over to tasks
-    if (event.clientX < borders.left - 2 ||
+    if (event.clientX < borders.left ||
       event.clientY < borders.top - toTop ||
       event.clientY > borders.top - toTop + tasks.outerHeight()) {
       removeMore();

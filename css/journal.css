@@ -5,14 +5,9 @@ ul {
 	margin-left: 15px;
 	padding-top: 25px;
 }
-.day-date {
-	transform: rotate(180deg);
-	font-size: 1.8em;
-	/* width: fit-content; */
-}
 .day-div {
-	writing-mode: vertical-lr;
 	text-align: center;
+	font-size: 1.8em;
 	padding-left: 8px;
 	padding-right: 8px;
 	background-color: lightskyblue;
@@ -25,54 +20,60 @@ ul {
 }
 .subjects {
 	padding-left: 16px;
-	width: 200px;
 }
-.tasks {
-	width: 400px;
+@media screen and (min-width:950px){
+	.subjects {
+		padding-left: 16px;
+		width: 200px;
+	}
+	.tasks {
+		width: 400px;
+	}
 }
 @media screen and (max-width:950px){
 	.tasks {
 	   width: 300px;
 	}
+	.subjects {
+		padding-left: 16px;
+		width: 200px;
+	}
 }
 @media screen and (max-width:850px){
 	.tasks {
-	   width: 270px !important;
+	   width: 300px !important;
 	}
 	.subjects {
+		padding-left: 10px;
 		width: 180px !important;
 	}
 }
-@media screen and (max-width:800px){
-	.tasks {
-	   width: 280px !important;
+@media screen and (min-width:601px){
+	.day-schedule {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		width: fit-content;
 	}
-	.subjects {
-		width: 190px !important;
+	.day-div {
+		writing-mode: vertical-lr;
+		text-align: center;
+	}
+	.day-date {
+		transform: rotate(180deg);
 	}
 }
 @media screen and (max-width:600px){
-	.tasks {
-	   max-width: 250px !important;
+	.day-date {
+		width: 600px;
 	}
-	.subjects {
-		width: 150px !important;
-	}
-}
-@media screen and (max-width:525px){
-	.tasks {
-	  width: 220px !important;
-	}
-	.subjects {
-		width: auto !important;
-	}
-}
-@media screen and (max-width:450px){
-	.tasks {
-	  width: auto !important;
-	}
-	.subjects {
-		width: auto !important;
+	.day-schedule {
+		overflow-x: hidden;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		width: calc(100% - 7px);
+		align-items: center;
 	}
 }
 .subjects div, .tasks div {
@@ -82,13 +83,11 @@ ul {
 	vertical-align: center;
 }
 .subjects ul {
-	list-style: none;
 	padding: 0px;
 	border: 2px ridge black;
 }
 .subjects ul li {
 	text-align: center;
-
 	overflow-y: hidden;
 }
 .subjects ul li:not(:first-child) {
@@ -103,8 +102,7 @@ ul {
 	border: 2px ridge black;
 }
 .tasks ul li {
-	overflow-y: hidden;
-	overflow-x: hidden;
+	overflow: hidden;
 	text-align: center;
 }
 .tasks ul li:not(:first-child) {
@@ -114,10 +112,10 @@ ul {
 	border-bottom:1px ridge black;
 }
 .day-schedule ul li {
-	display: flex;
+	padding-top: 8px;
+	padding-bottom: 8px;
 	align-items:center;
-	justify-content: center;
-	height: 30px !important;
+	height: 15px;
 }
 .content {
 	height: 100% !important;
@@ -128,11 +126,6 @@ ul {
 	background-color: floralwhite;
 	box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
 	margin-bottom: 20px;
-	display: flex;
-	/* flex: 1 4 6; */
-	flex-direction: row;
-	justify-content: center;
-	width: fit-content;
 }
 .edit-btn {
 	padding-left: 15px;

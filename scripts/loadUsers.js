@@ -56,8 +56,7 @@ function addBatch() {
         position: 'relative',
         top: 200,
         opacity: 0,
-      })
-
+      });
     animate(toAnimate);
 
     pending = false;
