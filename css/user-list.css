@@ -1,7 +1,11 @@
 ul.user-list {
   list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
-
+/* li.user {
+  width: fit-content;
+} */
 li.user div.cont{
   width: 300px;
   height: 150px;
@@ -18,12 +22,13 @@ li.user img {
 }
 
 li.user div:not(.cont) {
-  display: flex;
   height: inherit;
-  width: 150px;
-  vertical-align: middle;
-  align-items: center;
+  width: inherit;
 }
 li.user div:not(.cont) span {
-  padding-left: 30%;
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  width: inherit;
+  height: inherit;
 }
