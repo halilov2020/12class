@@ -1,6 +1,6 @@
 <?php
 require "./config.php";
-require "./includes/auth-reg.php";
+require (ROOT_DIR."/includes/auth-reg.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -50,7 +50,7 @@ require "./includes/auth-reg.php";
 		<!-- Registration popup -->
 		<div class="reg-page" id="reg">
 			<div class="h-reg">
-				<a href="javascript:PopUpHide_auth()" class="close">X</a>
+				<a href="javascript:PopUpHide_reg()" class="close">X</a>
 				<form method="POST" class="reg">
 					<ul>
 						<h3>Регистрация</h3>

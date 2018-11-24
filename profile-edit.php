@@ -1,26 +1,25 @@
 <?php
 require "./config.php";
-require "./includes/auth-reg.php";
-
-$sql_image = R::load('users', $_SESSION['logged_user']->id);
-$path_avatar = $sql_image->avatar;
-
-$data = $_POST;
+require (ROOT_DIR."/includes/auth-reg.php");
 $user = R::load('users', $_SESSION['logged_user']->id);
-$id_mysqli = $_SESSION['logged_user']->id;
-if(isset($data['confirm'])) { // Если кнопка "Сохранить" была нажата,то выполняется проверка и сохранение в БД
-	$errors = array();
-	if(trim($data['login']) == '' or ' ') {
-		$data['login'] = $user['login'];
+$path_avatar = $user->avatar;
+
+if(isset($_POST['confirm'])) { // Если кнопка "Сохранить" была нажата,то выполняется проверка и сохранение в БД
+	$data_pe = $_POST;
+	$error_pedit = array();
+	if(trim($data_pe['login']) == '') {
+		$data_pe['login'] = $user['login'];
+		echo "helloworld";
 	}
-	if(trim($data['real_name']) == '' or ' ') {
-		$data['real_name'] = $user['real_name'];
+	if(trim($data_pe['real_name']) == '') {
+		$data_pe['real_name'] = $user['real_name'];
+		echo "helloworld";
 	}
-	if($data['age'] == '' or ' ') {
-		$data['age'] = $user['age'];
+	if($data_pe['age'] == '') {
+		$data_pe['age'] = $user['age'];
 	}
-	if($data['gender'] == '') {
-		$data['gender'] = $user['gender'];
+	if($data_pe['gender'] == '') {
+		$data_pe['gender'] = $user['gender'];
 	}
 	if( !empty($_FILES['avatar_img']) ) {
 		$avatar_img = $_FILES['avatar_img']['name'];
@@ -35,64 +34,60 @@ if(isset($data['confirm'])) { // Если кнопка "Сохранить" бы
 		} else {
 			$path_to_90_directory = 'avatars/';
 				if(preg_match('/[.](JPG)|(jpg)|(gif)|(GIF)|(png)|(PNG)$/',$_FILES['avatar_img']['name'])) {
-				$filename = $_FILES['avatar_img']['name'];
-                $source = $_FILES['avatar_img']['tmp_name'];
-                $target = $path_to_90_directory.$filename;
-                move_uploaded_file($source,$target);
-                if(preg_match('/[.](GIF)|(gif)$/', $filename)){
-                	$im = imagecreatefromgif($path_to_90_directory.$filename);
-                }
-                if(preg_match('/[.](PNG)|(png)$/', $filename)) {
-                	$im = imagecreatefrompng($path_to_90_directory.$filename);
-                }
-                if(preg_match('/[.](JPG)|(jpg)|(jpeg)|(JPEG)$/', $filename)) {
-                	$im = imagecreatefromjpeg($path_to_90_directory.$filename);
-                }
+									$filename = $_FILES['avatar_img']['name'];
+	                $source = $_FILES['avatar_img']['tmp_name'];
+	                $target = $path_to_90_directory.$filename;
+	                move_uploaded_file($source,$target);
+	                if(preg_match('/[.](GIF)|(gif)$/', $filename)){
+	                	$im = imagecreatefromgif($path_to_90_directory.$filename);
+	                }
+									if(preg_match('/[.](PNG)|(png)$/', $filename)) {
+	                	$im = imagecreatefrompng($path_to_90_directory.$filename);
+	                }
+									if(preg_match('/[.](JPG)|(jpg)|(jpeg)|(JPEG)$/', $filename)) {
+	                	$im = imagecreatefromjpeg($path_to_90_directory.$filename);
+	                }
 
-                $w = 160;
-                $w_src = imagesx($im);
-             	$h_src = imagesy($im);
-             	$dest = imagecreatetruecolor($w, $w);
-             	if($w_src > $h_src) {
-             		imagecopyresampled($dest, $im, 0, 0, round((max($w_src,$h_src)-min($w_src,$h_src))/2), 0, $w, $w, min($w_src,$h_src), min($w_src,$h_src));
-
-             	}
-             	if($w_src < $h_src) {
-             		imagecopyresampled($dest, $im, 0, 0, 0, 0, $w, $w, min($w_src,$h_src), min($w_src,$h_src));
-
-             	}
-             	if($w_src == $h_src) {
-             		imagecopyresampled($dest, $im, 0, 0, 0, 0, $w, $w, $w_src, $w_src);
-                   	}
-                else {
-             		$errors[] = 'Формат изображения должен быть GIF,PNG или JPG';
-             	}
-             	$id = $_SESSION['logged_user']->id;
-              $date = time();
-             	imagejpeg($dest, $path_to_90_directory.$id."_".$date.".jpg");
-             	$avatar = $path_to_90_directory.$id."_".$date.".jpg";
-             	$delfull = $path_to_90_directory.$filename;
-             	unlink($delfull);
-             	if($path_avatar != "avatars/no_avatar.jpg"){
-             			unlink($path_avatar);
-             	}
-            }
+	                $w = 160;
+	                $w_src = imagesx($im);
+		             	$h_src = imagesy($im);
+		             	$dest = imagecreatetruecolor($w, $w);
+		             	if($w_src > $h_src) {
+		             		imagecopyresampled($dest, $im, 0, 0, round((max($w_src,$h_src)-min($w_src,$h_src))/2), 0, $w, $w, min($w_src,$h_src), min($w_src,$h_src));
+		             	}
+		             	if($w_src < $h_src) {
+		             		imagecopyresampled($dest, $im, 0, 0, 0, 0, $w, $w, min($w_src,$h_src), min($w_src,$h_src));
+		             	}
+		             	if($w_src == $h_src) {
+		             		imagecopyresampled($dest, $im, 0, 0, 0, 0, $w, $w, $w_src, $w_src);
+									}
+									$id = $_SESSION['logged_user']->id;
+									$date = time();
+									imagejpeg($dest, $path_to_90_directory.$id."_".$date.".jpg");
+									$avatar = $path_to_90_directory.$id."_".$date.".jpg";
+									unlink($target);
+									if($path_avatar != "avatars/no_avatar.jpg"){
+											unlink($path_avatar);
+									}
+	            } else {
+								$error_pedit[] = 'Формат изображения должен быть GIF,PNG или JPG';
+							}
 		}
 	}
-	if (empty($errors)) {
+	if (empty($error_pedit)) {
 		if ($user->id == $_SESSION['logged_user']->id){
-			$user->login = $data['login'];
-			$user->real_name = $data['real_name'];
-			$user->age = $data['age'];
+			$user->login = $data_pe['login'];
+			$user->real_name = $data_pe['real_name'];
+			$user->age = $data_pe['age'];
 			$user->avatar = $avatar;
-			$user->gender = $data['gender'];
+			$user->gender = $data_pe['gender'];
 			R::store($user);
 			echo 'Изменения сохранены!';
 			unset($_SESSION['logged_user']);
 		} else {
-			echo "Вы не можете внести изменения для этого пользователя,для начала авторизируйтесь!";
+			echo "Вы не можете внести изменения для этого пользователя, для начала авторизируйтесь!";
 		}
-	} else {echo "Возникли некоторые неполадки:" . array_shift($errors) . " пожалуйста исправьте их!";}
+	} else {echo 'Ошибка:'.array_shift($error_pedit).'!';}
 }
 ?>
 <!DOCTYPE html>
@@ -217,6 +212,7 @@ if(isset($data['confirm'])) { // Если кнопка "Сохранить" бы
 							</li>
 						</ul>
 					</form>
+
 				</div>
 			</div>
 			<div class="reg-page" id="reg">

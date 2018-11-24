@@ -1,8 +1,6 @@
 <?php
 require "./config.php";
-require "./includes/auth-reg.php";
-$sql_image = R::load('users', $_SESSION['logged_user']->id);
-$path_avatar = $sql_image->avatar;
+require (ROOT_DIR."/includes/auth-reg.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,7 +14,7 @@ $path_avatar = $sql_image->avatar;
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
 	<script src="./stories/popups.js"></script>
-	
+
 </head>
 <body>
 	<div class="nav-menu">

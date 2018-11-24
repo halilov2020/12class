@@ -1,7 +1,5 @@
 <?php
-  require '../libs/rb.php';
-  R::setup( 'mysql:host=localhost;dbname=12class',
-          'root', '' );
+  require "../config.php";
 
   $dzs = $_POST['dzs'];
   if( isset($dzs) ) {

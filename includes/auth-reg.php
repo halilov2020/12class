@@ -86,11 +86,12 @@ if( $data['sign_up'] ) {
 
 			echo '<div style="color:green">Вы успешно зарегистрировались!<br><a href="/">Главная</a></div>';
 	}
-}
-
-// Display errors
 	if( !empty($errors) )
 	{
 		echo '<div style="color:red">' . array_shift($errors) . '</div><hr>';
 	}
+}
+
+// Display errors
+
 ?>
