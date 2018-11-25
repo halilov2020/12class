@@ -21,14 +21,22 @@ function draw() {
   let t = frameCount / 60; // update time
 
   // create a random number of targets each frame
-  if (frameCount % 5 == 0) {
+  if (frameCount % 10 == 0) {
     targets.push(new target()); // append target object
   }
 
   // loop through targets with a for..of loop
   for (let flake of targets) {
-    flake.update(t); // update target position
-    flake.display(); // draw target
+    if (flake.dying) {
+      flake.update(t); // update target position
+      flake.display(); // draw target
+    }
+  }
+  for (let flake of targets) {
+    if (!flake.dying) {
+      flake.update(t); // update target position
+      flake.display(); // draw target
+    }
   }
   push();
   if (hit) {
