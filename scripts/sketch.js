@@ -7,7 +7,7 @@ var offSet = 0;
 var img;
 
 function setup() {
-  var canvas = createCanvas(windowWidth - 200, windowHeight - 150);
+  var canvas = createCanvas(0.8 * windowWidth, 0.9 * windowHeight);
   img = loadImage('./img/ball.png');
 
   // Move the canvas so it’s inside our <div id="sketch-holder">.
@@ -96,18 +96,20 @@ function target() {
     push();
     translate(this.posX, this.posY);
     rotate(angle * 3);
-    fill(203, 106, 212)
-    ellipse(0, 0, this.size, this.size)
-    image(img, -this.size / 2, -this.size / 2, this.size, this.size);
-    //ellipse(0, 0, this.size, this.size)
+
     if (this.dying) {
-      let rad = ~~map(frameCount - this.deathFrame, 0, 30, 0, this.size);
-      fill(159, 0, 0);
+      let rad = map(frameCount - this.deathFrame, 0, 20, 0, this.size);
+
+      fill(255, 0, 0);
+      ellipse(0, 0, this.size, this.size);
+      fill(208, 230, 227);
       ellipse(0, 0, rad, rad);
 
-      if (frameCount - this.deathFrame > 30) {
+      if (frameCount - this.deathFrame > 20) {
         this.die();
       }
+    } else {
+      image(img, -this.size / 2, -this.size / 2, this.size, this.size);
     }
     pop();
   };
@@ -118,7 +120,7 @@ function target() {
   }
 }
 
-function mouseClicked() {
+function mouseDragged() {
   for (let i = 0; i < targets.length; i++) {
     if (abs(targets[i].posX - mouseX) - targets[i].size < 0 &&
       abs(targets[i].posY - mouseY) - targets[i].size < 0) {

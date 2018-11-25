@@ -186,14 +186,15 @@ require (ROOT_DIR."/includes/auth-reg.php");
 				 <link type="text/css" rel="stylesheet" href="css/user-list.css">
 		     <script src="./scripts/loadUsers.js"></script>
 			</ul>
+			<div id='sketch-holder'></div>
 
 		</div>
 		<div class="footer">
 			 © 2018 Чотка
 		</div>
 	</div>
-<!-- 	<script src="./scripts/index.js"></script>
+	<!-- <script src="./scripts/index.js"></script>
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.6/p5.js"></script>
-  <script src="./scripts/sketch.js"></script>    -->
+  <script src="./scripts/sketch.js"></script> -->
 </body>
 </html>
