@@ -1,7 +1,65 @@
+var curr = true;
+var next = false;
+var prev = false;
+
+function resolveWeek(forward) {
+  if (forward) { // go forward
+    if (curr) {
+      curr = false;
+      next = true;
+    } else if (prev) {
+      curr = true;
+      prev = false;
+    }
+    return;
+  } else { // go backward
+    if (curr) {
+      curr = false;
+      prev = true;
+    } else if (next) {
+      curr = true;
+      next = false;
+    }
+  }
+}
+function addButtons() {
+  $('<button>')
+    .addClass('next settings-btn')
+    .click(function() {
+      removeMore();
+      let week = curr ? 'next' : '';
+      setDzs(week);
+      resolveWeek(true);
+      if (curr) {
+        $('.prev').removeAttr('disabled');
+      } else {
+        $(this).attr('disabled', 'disabled');
+      }
+    })
+    .html('Предыдущая')
+    .appendTo('.day-page');
+
+  $('<button>')
+    .addClass('prev settings-btn')
+    .click(function() {
+      removeMore();
+      let week = curr ? 'prev' : '';
+      setDzs(week);
+      resolveWeek(false);
+      if (curr) {
+        $('.next').removeAttr('disabled');
+      } else {
+        $(this).attr('disabled', 'disabled');
+      }
+    })
+    .html('Следующая')
+    .appendTo('.day-page');
+}
+
 if (window.location.pathname === "/journal-edit.php") {
   $(document).ready(function() {
+    addButtons();
     createTables();
-
 
     $('<a>')
       .html('Сохранить')
@@ -35,7 +93,6 @@ if (window.location.pathname === "/journal-edit.php") {
 function createTables() {
   let d = new Date();
   var index = d.getDay();
-  var firstDayWeek = (d.getDate() - d.getDay()) + 1;
   var daysWeek = [
     'Пн', 'Вт', 'Ср',
     'Чт', 'Пт', 'Сб',
@@ -55,11 +112,13 @@ function createTables() {
       var $tasks = $("<div>").addClass('tasks');
       var $dz = $("<ul>");
 
+      let date = new Date(Date.now() - (index - r - 1) * 24 * 60 * 60 * 1000);
+
       var $dayDate = $("<div>").addClass('day-date')
         .html(
           daysWeek[r] +
-          '\n' + (firstDayWeek + r) +
-          '.' + (d.getMonth() + 1));
+          '\n' + date.getDate() +
+          '.' + (date.getMonth() + 1));
 
       $.each(day, function(i, val) {
         if (i === 0) {
@@ -111,9 +170,14 @@ function createTables() {
   })
 }
 
-function setDzs() {
+function setDzs(specificString) {
+  if (!specificString) {
+    specificString = '';
+  }
   var dzs = $('.dz'); // shortened name
-  $.get('./dz.php', function(data) {
+  // access table specific table with tasks
+  console.log(specificString);
+  $.get('./dz.php?index=' + specificString, function(data) {
     let $obj = JSON.parse(data);
     let $dzt = [];
     for (let j = 1; j <= 49; j++) {

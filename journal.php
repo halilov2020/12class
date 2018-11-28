@@ -178,6 +178,7 @@ require (ROOT_DIR."/includes/auth-reg.php");
 			<script src="./scripts/journal-respond.js"></script>
 			<script src='./stories/journal.js'></script>
 			<script>
+				addButtons();
 				createTables();
 			</script>
 		</div>
