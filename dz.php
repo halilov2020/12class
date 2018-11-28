@@ -1,9 +1,9 @@
 <?php
 require "./config.php";
-$_index = $_GET['index'];
-if (isset($_index)) {
+$week = $_GET['index'];
+if (isset($week)) {
     //get the requested table
-    $dz_items = R::findAll('dz'.$_index);
+    $dz_items = R::findAll('dz'.$week);
 
     $arr = [];
     for($i = 1; $i <= 49; $i++ ) {

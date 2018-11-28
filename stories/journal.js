@@ -73,7 +73,8 @@ if (window.location.pathname === "/journal-edit.php") {
         });
 
         $.post('/data-management/journal-save.php', {
-          dzs: a
+          dzs: a,
+          week: curr ? '' : prev ? 'prev' : 'next'
         }, function(data) {
           console.log(data);
         })
