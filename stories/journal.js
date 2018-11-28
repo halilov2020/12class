@@ -24,22 +24,6 @@ function resolveWeek(forward) {
 }
 function addButtons() {
   $('<button>')
-    .addClass('next settings-btn')
-    .click(function() {
-      removeMore();
-      let week = curr ? 'next' : '';
-      setDzs(week);
-      resolveWeek(true);
-      if (curr) {
-        $('.prev').removeAttr('disabled');
-      } else {
-        $(this).attr('disabled', 'disabled');
-      }
-    })
-    .html('Предыдущая')
-    .appendTo('.day-page');
-
-  $('<button>')
     .addClass('prev settings-btn')
     .click(function() {
       removeMore();
@@ -52,8 +36,25 @@ function addButtons() {
         $(this).attr('disabled', 'disabled');
       }
     })
+    .html('Предыдущая')
+    .appendTo('.day-page');
+
+  $('<button>')
+    .addClass('next settings-btn')
+    .click(function() {
+      removeMore();
+      let week = curr ? 'next' : '';
+      setDzs(week);
+      resolveWeek(true);
+      if (curr) {
+        $('.prev').removeAttr('disabled');
+      } else {
+        $(this).attr('disabled', 'disabled');
+      }
+    })
     .html('Следующая')
     .appendTo('.day-page');
+
 }
 
 if (window.location.pathname === "/journal-edit.php") {
@@ -177,7 +178,6 @@ function setDzs(specificString) {
   }
   var dzs = $('.dz'); // shortened name
   // access table specific table with tasks
-  console.log(specificString);
   $.get('./dz.php?index=' + specificString, function(data) {
     let $obj = JSON.parse(data);
     let $dzt = [];

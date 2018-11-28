@@ -2,7 +2,7 @@
   require "../config.php";
 
   $dzs = $_POST['dzs'];
-  $week = $_POST['week']
+  $week = $_POST['week'];
   if ( !isset($week) )
   {
     $week = '';
