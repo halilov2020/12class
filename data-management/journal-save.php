@@ -13,10 +13,13 @@
       {
   			// это объект - нужно переделать в массив
   			$dz_item = R::findOne('dz'.$week, 'id = ?', [$i+1]);
-          if ( isset($dz_item) ) {
+          if ( isset($dz_item) )
+          {
       			$dz_item->value = $dzs[$i];
       			R::store($dz_item);
-          } else {
+          }
+          else 
+          {
             $row = R::dispense('dz'.$week);
             $row->value = $dzs[$i];
             R::store($row);
