@@ -3,10 +3,12 @@ $(document).ready(function() {
   $("#auth, #reg").click(function(event) {
     event.stopPropagation();
   }).hide();
+  $('.pop-ups')
+    .removeClass('.hidden')
+    .show();
   $(".h-auth, .h-reg").click(function(event) {
     event.stopPropagation();
   });
-
   $("#reg .close").click(function() {
     $("#reg").hide();
   });

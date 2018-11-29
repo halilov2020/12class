@@ -18,7 +18,7 @@ require (ROOT_DIR."/includes/auth-reg.php");
 <body>
 
 	<div class="content">
-	<div class="pop-ups">
+	<div class="pop-ups hidden">
 		<!-- Authentication popup -->
 		<div class="auth-page" id="auth">
 			<div class="h-auth">

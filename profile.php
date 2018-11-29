@@ -121,7 +121,7 @@ require (ROOT_DIR."/includes/auth-reg.php");
 							</li>
 							<li>
 								<button type="submit" name="do_login" class="settings-btn">Войти</button>
-								<a href="javascript:PopUpHide_auth(), PopUpShow_reg()"><input type="button" value="Зарегистрироваться" class="settings-btn"></a>
+								<a ><input type="button" value="Зарегистрироваться" class="settings-btn"></a>
 
 							</li>
 						</ul>
