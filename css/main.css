@@ -34,7 +34,7 @@ body {
 	font-size: 16px;
 	text-decoration: none;
 	background-color: rgba(21,31,40,.5);
-	border-left:4px solid #25bdb1;
+	border-left: 4px solid #25bdb1;
 }
 .nav-page:hover {
 	display: block;
@@ -72,10 +72,10 @@ body {
 	background-color: #e6e3e6;
 	text-decoration: none;
 	text-align: center;
-	padding:10px 20px;
+	padding: 10px 20px;
 	border-radius: 5px;
-	font-size:16px;
-	cursor:pointer;
+	font-size: 16px;
+	cursor: pointer;
 }
 .btn-popup:hover {
 	background-color: #B5B5B5;
@@ -85,20 +85,20 @@ body {
 }
 .settings-btn {
 	display: inline-table;
-	color:#e6e3e6;
+	color: #e6e3e6;
 	background-color: #283C4D;
 	text-decoration: none;
-	text-align:center;
-	padding:10px 20px;
+	text-align: center;
+	padding: 10px 20px;
 	border-radius: 5px;
-	font-size:16px;
-	cursor:pointer;
+	font-size: 16px;
+	cursor: pointer;
 }
 .settings-btn:hover {
 	background-color: #1c242c;
 }
 .confirm {
-	text-align:center;
+	text-align: center;
 }
 .page {
 	height: 100%;
@@ -116,7 +116,6 @@ body {
 	align-items: center;
 	padding: 0 100px 0 0;
 }
-
 .header_authorized {
 	color: #00ffeb;
 	margin-right: 55px;
@@ -135,13 +134,6 @@ body {
 	min-height: 1000px;
 	width: auto;
 	background-color: #e6e3e6;
-
-}
-.profile-page {
-	padding-top: 25px;
-	padding-left: 50px;
-	padding-right: 50px;
-	box-sizing: border-box;
 }
 .footer {
 	text-align: center;
@@ -152,65 +144,4 @@ body {
 	height: 75px;
 	background-color: #1c242c;
 	color: #f0f0f0;
-}
-.profile-user-block {
-	display: flex;
-	flex-direction: row;
-}
-.profile-page-avatar {
-	height: 160px;
-	width: 160px;
-}
-.profile-user-info ul{
-	list-style: none;
-	padding-left: 20px;
-}
-.profile-user-info ul li {
-	margin-bottom: 15px;
-	font-size: 18px;
-}
-.profile-edit-escape {
-	width: 85px;
-	margin-left: 10px;
-}
-.profile-edit-submit {
-	cursor: pointer;
-}
-.profile-edit {
-	margin-left: 100px;
-
-}
-.profile-reset-avatar {
-	display: inline-table;
-}
-
-.file-upload {
-     position: relative; /* Даем возможность делать позиционирование, внутри данного элемента */
-     overflow: hidden; /* Все что выходит за пределы - скрываем */
-     width: 42%; /* Задаем ширину кнопки выбора файла */
-     height: 20px; /* Задаем высоту кнопки выбора файла */
-     background: #6da047;
-     border-radius: 3px;
-     padding: 8px 4px;
-     color: #fff;
-     text-align: center;
-}
-.file-upload:hover {
-     background: #7aad55;
-}
-.file-upload input[type="file"]{
-    display: none; /* Обязательно скрываем настоящий Input File */
-}
-.file-upload label {
-     /* Растягиваем label на всю возможную площадь блока .file-upload */
-     display: block;
-     position: absolute;
-     top: 0;
-     left: 0;
-     width: 100%;
-     height: 100%;
-     cursor: pointer;
-}
-.file-upload span {
-     line-height: 36px; /* Делаем вертикальное выравнивание текста, который написан на кнопке */
 }

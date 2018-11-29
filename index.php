@@ -12,7 +12,7 @@ require (ROOT_DIR."/includes/auth-reg.php");
 	<link type="text/css" rel="stylesheet" href="./css/popup.css?v1">
 	<link type="text/css" rel="stylesheet" href="./css/media.css?v1">
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-	<script src="./stories/popups.js"></script>
+	<script src="./scripts/popups.js"></script>
 </head>
 
 <body>
@@ -22,7 +22,7 @@ require (ROOT_DIR."/includes/auth-reg.php");
 		<!-- Authentication popup -->
 		<div class="auth-page" id="auth">
 			<div class="h-auth">
-				<a href="javascript:PopUpHide_auth()" class="close">X</a>
+				<a class="close">X</a>
 				<form method="POST" class="auth">
 					<ul>
 						<h3>Авторизация</h3>
@@ -38,7 +38,7 @@ require (ROOT_DIR."/includes/auth-reg.php");
 						</li>
 						<li>
 							<button type="submit" name="do_login" class="settings-btn">Войти</button>
-							<a href="javascript:PopUpHide_auth(), PopUpShow_reg()"><input type="button" value="Зарегистрироваться" class="settings-btn"></a>
+							<a><input type="button" value="Зарегистрироваться" class="settings-btn"></a>
 
 						</li>
 					</ul>
@@ -50,7 +50,7 @@ require (ROOT_DIR."/includes/auth-reg.php");
 		<!-- Registration popup -->
 		<div class="reg-page" id="reg">
 			<div class="h-reg">
-				<a href="javascript:PopUpHide_reg()" class="close">X</a>
+				<a class="close">X</a>
 				<form method="POST" class="reg">
 					<ul>
 						<h3>Регистрация</h3>
@@ -75,7 +75,7 @@ require (ROOT_DIR."/includes/auth-reg.php");
 							<span>* Введите пароль повторно,пароли должны совпадать!</span>
 						</li>
 						<li>
-							<button type="submit" name="sign_up" class="settings-btn">Зарегистрироваться</button> <a href="javascript:PopUpHide_reg(), PopUpShow_auth()" class="settings-btn">Войти</a>
+							<button type="submit" name="sign_up" class="settings-btn">Зарегистрироваться</button> <a class="settings-btn">Войти</a>
 						</li>
 					</ul>
 				</form>
@@ -116,7 +116,7 @@ require (ROOT_DIR."/includes/auth-reg.php");
 	</div>
 	<div id="m-menu" hidden>
 		<ul>
-			<li><a class="mobile-menu-li" href="javascript:HideMobileMenu()">
+			<li><a class="mobile-menu-li cross-mobile">
 				<img src="./img/cancel-m.png">
 				<span>Закрыть</span>
 			</a>
@@ -150,7 +150,7 @@ require (ROOT_DIR."/includes/auth-reg.php");
 	</div>
 	<div class="page">
 		<div class="header">
-			<div class="hamburger-ico" onclick="javascript:ShowMobileMenu()">
+			<div class="hamburger-ico">
 					<div class="hamburger-icon"></div>
 					<div class="hamburger-icon"></div>
 					<div class="hamburger-icon"></div>
@@ -175,8 +175,8 @@ require (ROOT_DIR."/includes/auth-reg.php");
 			<!-- If not logged in -->
 			<?php else : ?>
 			<div class="authorization" align="right">
-				<a href="javascript:PopUpShow_auth()" class="btn-popup login">Войти</a>
-		 		<a href="javascript:PopUpShow_reg()" class="btn-popup register">Регистрация</a>
+				<a class="btn-popup login">Войти</a>
+		 		<a class="btn-popup register">Регистрация</a>
 			</div>
 			<?php endif; ?>
 		</div>
